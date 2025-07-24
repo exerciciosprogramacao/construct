@@ -5,39 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Exercícios</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="./img/logo.png">
+  <link rel="icon" type="image/png" href="./img/logocons.png">
 </head>
 <body>
   <div class="btt">
+    <button class="avancar">💰 15</button>
     <button class="avancar" onclick="toggleDarkMode()">👓</button>
   </div>
 
   <h1 class="tit">📘 Documentação do Projeto - Dino</h1>
 
   <div class="image">
-    <iframe width="552" height="167" frameborder="0" src="https://itch.io/embed/3745615"><a href="https://exerciciosprogramacao.itch.io/dino">dino by exerciciosprogramacao</a></iframe>
+    <iframe
+  frameborder="0"
+  src="https://itch.io/embed/3745615"
+  width="552"
+  height="167"
+>
+  <a href="https://exerciciosprogramacao.itch.io/dino">Jogue Dino no Itch.io</a>
+</iframe>
   </div>
 
   <div class="bloco">
     <h2>🎮 Jogo</h2>
-    <p class="explicacao">👉 Esse jogo foi feito com o Tamanho de exibição de tela de 854 x 480.</p>
+    <p class="explicacao">👉 Esse jogo foi feito com o tamanho de exibição de tela de 854 x 480.</p>
     <p class="explicacao">👉 Comece inserindo todos os personagens/objetos e o cenário no jogo.</p>
-    <p class="explicacao">👉 Todos os objetos deste jogo são do tipo Sprite menos o teclado e tempo.</p>
+    <p class="explicacao">👉 Todos os objetos deste jogo são do tipo Sprite, menos o teclado e tempo.</p>
     <p class="explicacao">👉 O dino deve ter uma animação de correndo e outra de abaixar.</p>
-    <p class="explicacao">👉 O cactus deve ter uma animação de cactos e outra de passaro.</p>
+    <p class="explicacao">👉 O cacto deve ter uma animação de cactos e outra de pássaro.</p>
     <p class="explicacao">👉 Se você usou os sprites fornecidos, todas as colisões "hitbox" já devem estar corretas, assim como os pontos de imagem.</p>
     <p class="explicacao">👉 Lembre-se de ajustar as <strong>elevações Z</strong> para que tudo fique certinho na tela.</p>
-    <p class="explicacao">👮‍♀️👮‍♂️ <strong>Verifique tudo </strong>certinho antes de continuar!.</p>
+    <p class="explicacao">👮‍♀️👮‍♂️ <strong>Verifique tudo</strong> certinho antes de continuar!</p>
     <pre>
 👉 Tipos de objetos
 
-cactus = Sprite
+cacto = Sprite
 chão = Sprite
 dino = Sprite
 fundo = Sprite
 gameover = Sprite
-geradomuvem = Sprite
-geraror = Sprite
+geradornuvem = Sprite
+geradorcacto = Sprite
 nuvem = Sprite
 teclado = Teclado
 tempo = Texto
@@ -53,12 +61,23 @@ Folha do jogo
 Folha game over
     </pre>
   <p class="explicacao">👉 Não esqueça de <strong>criar mais um layout com sua folha de eventos</strong></p>
-  <p class="explicacao">👉 Na animação cactus do cactus devemos deixar a opção de repetir desativada.</p>
-  <p class="explicacao">👉 Na animação passaro do cactus devemos ativar o repetir e deixar a velocidade em 8.</p>
+  <p class="explicacao">👉 Na animação cacto do cacto devemos deixar a opção de repetir desativada.</p>
+  <p class="explicacao">👉 Na animação pássaro do cacto devemos ativar o repetir e deixar a velocidade em 8.</p>
   <p class="explicacao">👉 Na animação do chão vamos ativar o repetir e deixar a velocidade em 3.</p>
-  <p class="explicacao">👉 No dino temos a animação de correndo e abaixar. Vamos ativar o repetir de corrento e deixar desativado o de abaixar, ambos com 5 de velocidade </p>
-
+  <p class="explicacao">👉 No dino temos a animação de correndo e abaixar. Vamos ativar o repetir de correndo e deixar desativado o de abaixar, ambos com 5 de velocidade.</p>
   </div>
+
+  <div class="bloco">
+    <h2>🧱 Chão</h2>
+  <pre>
+👉 Comportamentos
+
+Comportamento: sólido
+
+Habilitado: Ativado (✔)
+  </pre>
+  <p class="explicacao">👉 Chão deve ser sólido, para o personagem não cair.</p> 
+</div>
 
   <div class="bloco">
     <h2>🦖 Personagem</h2>
@@ -83,7 +102,7 @@ Habilitado: Ativado (✔)
     <div class="bloco">
       <h2>🦖 Pular e abaixar</h2>
     <pre>
-1 - Teclado: Ao pressionar Barra de espaço      | dino: Simular Plataforma pressionando Pulo 
+1 - Teclado: Ao pressionar Barra de espaço      | dino: "simular comando" Simular Plataforma pressionando Pulo 
 
 2 - Teclado: C está pressionada                 | dino: Definir animação para "abaixar" (executar do início)
 
@@ -94,32 +113,29 @@ Habilitado: Ativado (✔)
   </div>
   
   <div class="bloco">
-    <h2>⚙ Gerador</h2>
+    <h2>🎋 Gerador cacto</h2>
     <pre>
 Gerador não precisa de nenhum comportamento.
     </pre>
-    <h2>⚙ Gerar o cactus</h2>
+    <h2>🎋 Gerar o cacto</h2>
 <p class="explicacao">💾 Vamos começar criando uma variável global chamada tipo.</p>
 
     <pre>
 🌎 Global: número tipo = 0
 
 4 - Sistema: A cada 3 segundos                  | Sistema:"definir valor" Definir tipo para escolher(0,1,2,3,4,5) "escolher é choose"
-                                                | gerador: "dar origem" Gerar cactus na camada 0 (ponto X=0, hierarquia: Falso)
+                                                | geradorcacto: "dar origem" Gerar cacto na camada 0 (ponto X=0, hierarquia: Falso)
     </pre>
-    <p class="explicacao">👉 Temos 5 cactus dentro da nossa animação, equivalentes do 0 ao 4.</p>
-    <p class="explicacao">👉 O número 5 é nosso passaro, por isso colocamos de 0,1,2,3,4,5.</p>
-    <p class="explicacao">👉 O escolher "choose". Vai escolher esses numeros de 0 a 5.</p>    
-    <p class="explicacao">👉 Também temos a geração dos cactus, "dar origem a outro objeto".</p>
-    <p class="explicacao">👉 Conforme o choose escolhe um numero ele defini o frame da animação do cactus para esse número, podendo mudar a cada 3 segundos.</p>
-    
-
+    <p class="explicacao">👉 Temos 5 cactos dentro da nossa animação, equivalentes do 0 ao 4.</p>
+    <p class="explicacao">👉 O número 5 é nosso pássaro, por isso colocamos de 0,1,2,3,4,5.</p>
+    <p class="explicacao">👉 O escolher "choose" vai escolher esses números de 0 a 5.</p>    
+    <p class="explicacao">👉 Também temos a geração dos cactos, "dar origem a outro objeto".</p>
+    <p class="explicacao">👉 Conforme o choose escolhe um número ele define o frame da animação do cacto para esse número, podendo mudar a cada 3 segundos.</p>
   </div>
 
     <div class="bloco">
-      <h2>🎋 Cactus</h2>
+      <h2>🎋 Cacto</h2>
       <pre>
-
 👉 Comportamentos 
 
 Comportamento: MovePara
@@ -131,53 +147,99 @@ Velocidade de rotação: 0
 Definir ângulo: Ativado (✔)
 Parar em sólidos: Ativado (□)
 Habilitado: Ativado (✔)
-
       </pre>
-      <p class="explicacao">👉 Mover para serve para pordermos programar uma movimentação ou a chegada até um local.</p>
+      <p class="explicacao">👉 MoverPara serve para podermos programar uma movimentação ou a chegada até um local.</p>
     </div>
 
     <div class="bloco">
-    <h2>🎋 Mover e trocar cactus</h2>
+    <h2>🎋 Mover e trocar cacto</h2>
     <pre>
-5 - Sistema: "comparar variável" tipo = 5       | cactus: Definir animação para "passaro" (executar do início)
-                                                | cactus: Definir Invertido
-                                                | cactus: Definir Espelhado
+5 - Sistema: "comparar variável" tipo = 5       | cacto: Definir animação para "pássaro" (executar do início)
+                                                | cacto: Definir Invertido
+                                                | cacto: Definir Espelhado
 
-6 - cactus: Ao criar                            | cactus: Definir quadro da animação para tipo "variável"  
-                                                | cactus: MoverPara posição (-50, Self.Y) (Direto) "-50 no x" "Self.Y no Y" 
-                                                | cactus: Definir Invertido  
-                                                | cactus: Parar animação 
+6 - cacto: Ao criar                            | cacto: Definir quadro da animação para tipo "variável"  
+                                                | cacto: MoverPara posição (-50, Self.Y) (Direto) "-50 no x" "Self.Y no Y" 
+                                                | cacto: Definir Invertido  
+                                                | cacto: Parar animação 
 
-7 - cactus:"Mover para" Ao chegar               | cactus: Destruir
-    cactus: "comparar x" X <= -50
+7 - cacto:"Mover para" Ao chegar               | cacto: Destruir
+    cacto: "comparar x" X <= -50
     </pre>
-    <p class="explicacao">👉 Se der o numero 5 na variável tipo, definimos a animação para "passaro".</p>
-    <p class="explicacao">👉 Na linha 6 é onde realmente acontece a mudança do frame da animação, mudando os cactus.</p>
-    <p class="explicacao">👉 Essa linha também move o cactus. Estamos mandando ele mover até a posição no fim da tela, atrás do dino.</p>
+    <p class="explicacao">👉 Se der o número 5 na variável tipo, definimos a animação para "pássaro".</p>
+    <p class="explicacao">👉 Na linha 6 é onde realmente acontece a mudança do frame da animação, mudando os cactos.</p>
+    <p class="explicacao">👉 Essa linha também move o cacto. Estamos mandando ele mover até a posição no fim da tela, atrás do dino.</p>
+    <p class="explicacao">👉 A linha 7 é o que chamamos de outra condição. Clique com o botão direito em cima da linha número 7 👉 <strong>adicionar</strong> 👉 <strong>Adicionar outra condição</strong>.</p>
     <p class="explicacao">👉 Na linha 7 verificamos se ele chegou na posição x, se chegou destrói.</p>
   </div>
 
   <div class="bloco">
-    <h2>🦖 Colidir com cactus</h2>
+    <h2>🦖 Colidir com cacto</h2>
   <pre>
-8 - dino: Ao colidir com cactus                 | Sistema: Ir para tela "Game Over"     
+8 - dino: Ao colidir com cacto                 | Sistema: Ir para tela "Game Over"     
   </pre>
-  <p class="explicacao">👉 Se o dino colidir com o ator cactus, vamos para layout game over.</p> 
+  <p class="explicacao">👉 Se o dino colidir com o ator cacto, vamos para layout game over.</p> 
+</div>
+
+<div class="bloco">
+  <h2>☁ Nuvem</h2>
+  <pre>
+👉 Comportamentos
+
+Comportamento: Projétil
+
+Velocidade: -100
+Aceleração: 0
+Gravidade: 0
+Ricochetear em sólidos: Desativado [ ]
+Definir ângulo: Ativado [✔]
+Passo: Desativado [ ]
+Habilitado: Ativado [✔] 
+</pre>
+<p class="explicacao">👉 Estamos usando este comportamento para sabermos que existem diferentes maneiras de fazer a mesma coisa.</p>
+<p class="explicacao">👉 No cacto usamos o MoverPara, na nuvem estamos usando o projétil.</p>
+<p class="explicacao">👉 Projétil é um comportamento que faz algo se mover em relação a um ângulo.</p>
+<p class="explicacao">👉 A nuvem se move automaticamente com o nosso comportamento de projétil.</p>
 </div>
 
 <div class="bloco">
   <h2>☁ Gerador de nuvem</h2>
+  <pre>
+👉 Comportamentos
+
+Comportamento: Não precisa de comportamento  
+      </pre>
 <pre>
-8 - dino: Ao colidir com cactus                 | Sistema: Ir para tela "Game Over"     
+9 - nuvem "comparar x" X <= -50                 | nuvem: Destruir
+                                                | geradornuvem: Criar nuvem na camada 0 (ponto X=0, hierarquia: Falso)
+
+10 - nuvem: Ao criar                            | Definir Invertido
+                                                | Definir Não espelhado   
 </pre>
-<p class="explicacao">👉 Se o dino colidir com o ator cactus, vamos para layout game over.</p> 
+<p class="explicacao">👉 Na linha 9 verificamos se a nuvem chegou na posição x, se chegou destrói.</p>
+<p class="explicacao">👉 Após chegar na posição, o gerador cria uma nova nuvem que respeita essa mesma regra. Move automaticamente e destrói ao chegar na posição.</p>
+<p class="explicacao">👉 Na linha 10 só estamos deixando a imagem da nuvem no ângulo certo e garantindo que ela não vire ao contrário.</p>
+</div>
+
+<div class="bloco">
+  <h2>⚙ Sistema</h2>
+  <p class="explicacao">💾 Vamos começar criando uma variável global chamada tempo.</p>
+<pre>
+🌎 Global: número tipo = 0
+
+11 - Sistema: Ao iniciar layout                 | Definir Invertido
+                                                | Definir Não espelhado        
+                                                
+12 - Sistema: A cada 1 segundo                  | Sistema: Adicionar 1 à variável "tempo"  
+
+13 - Sistema: A cada tick                       | Texto: Definir texto para "tempo jogado: &tempo"
+</pre>
+<p class="explicacao">👉 Na linha 11 só estamos deixando a imagem da nuvem no ângulo certo e garantindo que ela não vire ao contrário.</p>
+<p class="explicacao">👉 A cada 1 segundo aumentamos 1 na variável tempo.</p>
+<p class="explicacao">👉 Por último, precisamos mostrar no texto da tela o que está na nossa variável.</p>
 </div>
 
 <div class="bt">
-  <!-- <button class="voltar">
-    Voltar
-    
-</button> -->
   <button class="avancar">
     <a href="./jogo2.html">Avançar</a>
 </button>
@@ -185,4 +247,3 @@ Habilitado: Ativado (✔)
 <script src="./script.js"></script>
 </body>
 </html>
-

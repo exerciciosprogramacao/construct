@@ -30,7 +30,7 @@ body.dark a {
 
 .btt{
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 /* ---------------------------------------- */
 body {
@@ -100,12 +100,16 @@ h1{
   text-align: center;
 }
 
+iframe{
+  border-radius: 5px;
+}
+
 button{
   width: 62.67px;
 }
 
 @media (max-width: 768px) {
-  img{
-    max-width: 300px;
+  iframe{
+    max-width: 200px;
   }
 }
