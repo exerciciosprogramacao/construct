@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercícios</title>
+  <link rel="stylesheet" href="jogo2.css">
+  <link rel="icon" type="image/png" href="./img/logocons.png">
+</head>
+<body>
+  <div class="btt">
+    <button class="avancar">💰 15</button>
+    <button class="avancar" onclick="toggleDarkMode()">👓</button>
+  </div>
+
+  <h1 class="tit">📘 Documentação do Projeto - Pongia</h1>
+
+  <div class="image">
+    <iframe
+  frameborder="0"
+  src="https://itch.io/embed/3747592"
+  width="552"
+  height="167"
+>
+<a href="https://exerciciosprogramacao.itch.io/pongia">Pongia by exerciciosprogramacao</a>
+</iframe>
+  </div>
+
+  <div class="bloco">
+    <h2>🎮 Jogo</h2>
+    <p class="explicacao">👉 Esse jogo foi feito com o tamanho de layout de 1708 x 960.</p>
+    <p class="explicacao">👉 Esse jogo foi feito com o tamanho de exibição de tela de 854 x 480.</p>
+    <p class="explicacao">👉 Comece inserindo todos os personagens/objetos e o cenário no jogo.</p>
+    <p class="explicacao">👉 Todos os objetos deste jogo são do tipo Sprite, menos o teclado e textos.</p>
+    <p class="explicacao">👉 Lembre-se de ajustar as <strong>elevações Z</strong> para que tudo fique certinho na tela.</p>
+    <p class="explicacao">👮‍♀️👮‍♂️ <strong>Verifique tudo</strong> certinho antes de continuar!</p>
+    <pre>
+👉 Tipos de objetos
+
+paredes = Sprite
+persbola = Sprite
+personagem1 = Sprite
+personagem2 = Sprite
+fundo = Sprite
+teclado = Teclado 
+textopontos1 = Texto
+textopontos2 = Texto
+
+👉 Layouts              
+
+pong
+
+👉 Folhas de Eventos
+
+Folha do pong
+    </pre>
+  </div>
+
+  <div class="bloco">
+    <h2>🧱 Paredes</h2>
+  <pre>
+👉 Comportamentos
+
+Comportamento: sólido
+
+Habilitado: Ativado (✔)
+  </pre>
+  <p class="explicacao">👉 Paredes devem ser sólidas, para a bola não passar.</p> 
+</div>
+
+  <div class="bloco">
+    <h2>🏏 Personagem 1</h2>
+    <pre>
+👉 Comportamentos
+
+Comportamento: 8Direções
+
+Velocidade máxima: 1000
+Aceleração: 2000
+Desaceleração: 1500
+Direções permitidas: Cima e baixo
+Definir ângulo: Não
+Permitir deslizar: Desativado (□)
+Controles padrão: Desativado (□)
+Habilitado: Ativado (✔)
+    </pre>
+    <p class="explicacao">👉 8Direções faz o personagem se mover, vamos limitar para cima e para baixo.</p>  
+  </div>
+    <div class="bloco">
+      <h2>🏏 Personagem 1</h2>
+    <pre>
+1 - Teclado: W pressionada                  | personagem1: Simular 8Direções para Cima
+
+2 - Teclado: S pressionada                  | personagem1: Simular 8Direções para Baixo     
+    </pre>
+    <p class="explicacao">👉 Temos que simular o comando para cima e para baixo do comportamento 8Direções.</p>
+  </div>
+  
+  <div class="bloco">
+    <h2>🎱 Bola</h2>
+    <pre>
+👉 Comportamentos
+
+Comportamento: Projétil
+
+Velocidade: 400
+Aceleração: 0
+Gravidade: 0
+Ricochetear em sólidos: Ativado [✔]
+Definir ângulo: Ativado [✔]
+Passo: Desativado [ ]
+Habilitado: Ativado [✔] 
+    </pre>
+    <h2>🎱 Bola</h2>
+<p class="explicacao">💾 Vamos começar criando as variáveis globais: bola, PontosPlayer1, PontosPlayer2 e velocidade.</p>
+
+    <pre>
+🌎 Global: número bola = 0
+🌎 Global: número PontosPlayer1 = 0
+🌎 Global: número PontosPlayer2 = 0
+🌎 Global: número velocidade = 700
+
+3 - Sistema: Ao iniciar layout              | persbola: Definir ângulo para aleatória(1,359) graus "aleatória é random"
+
+4 - persbola: Colidir com personagem1       | persbola: Ricochetear (Projétil: personagem1)
+
+5 - persbola: Colidir com personagem2       | persbola: Ricochetear (Projétil: personagem2)
+
+6 - persbola: X > 795                       | Sistema: Adicionar 1 para PontosPlayer1
+                                            | persbola: Definir posição para (422.5, 240)
+                                            | persbola: Definir ângulo para aleatória(1,359) graus "aleatória é random"
+
+7 - persbola: X < 60                        | Sistema: Adicionar 1 para PontosPlayer2
+                                            | persbola: Definir posição para (422.5, 240)
+                                            | persbola: Definir ângulo para aleatória(1,359) graus "aleatória é random"
+</pre>
+    <p class="explicacao">👉 Linha 3 define o ângulo da bola, o que faz com que ela comece indo em uma direção diferente a cada partida ou gol.</p>
+    <p class="explicacao">👉 Linhas 4 e 5 fazem a bola ricochetear de acordo com o ângulo da colisão.</p>
+    <p class="explicacao">👉 Na linha 6, se a posição X da bola for maior que 795 (ou seja, ela passou do lado direito da tela), o sistema entende que o Player1 marcou um ponto.</p>
+    <p class="explicacao">👉 Após marcar o ponto, a bola volta para o centro (posição 422.5, 240) e seu ângulo é novamente definido de forma aleatória.</p>
+    <p class="explicacao">👉 Na linha 7, se a posição X da bola for menor que 60 (ou seja, ela passou do lado esquerdo da tela), o sistema entende que o Player2 marcou um ponto.</p>
+  </div>
+
+    <div class="bloco">
+      <h2>🏏 Personagem 2</h2>
+      <pre>
+👉 Comportamentos 
+
+Comportamento: MovePara
+
+Velocidade máxima: 1200
+Aceleração: 2200
+Desaceleração: 1700
+Velocidade de rotação: 0
+Definir ângulo: Desativado (□)
+Parar em sólidos: Ativado (✔)
+Habilitado: Ativado (✔)
+      </pre>
+      <p class="explicacao">👉 MoverPara serve para podermos programar uma movimentação ou a chegada até um local.</p>
+    </div>
+
+    <div class="bloco">
+    <h2>🏏 Personagem 2 🎱 Velocidade da bola e 📃 textos</h2>
+    <pre>
+8 - Sistema: A cada tick                    | personagem2: MoverPara (self.X, bola) (Direto)
+                                            | persbola: Definir velocidade de Projétil para velocidade "variável"
+                                            | textopontos1: Definir texto para "Pontos P1: "&PontosPlayer1
+                                            | textopontos2: Definir texto para "Pontos P2: "&PontosPlayer2
+                                            | Sistema: Definir bola para persbola.Y "variável"
+
+9 - Sistema: A cada 5 segundos              | Sistema: Adicionar 10 para velocidade "variável"                                            
+    </pre>
+    <p class="explicacao">👉 A linha 8 acontece a cada tick (atualização do jogo), ou seja, o tempo todo.</p>
+    <p class="explicacao">👉 O personagem2 se move na direção da variável "bola", fazendo com que ele siga a bola automaticamente.</p>
+    <p class="explicacao">👉 A velocidade da bola é ajustada com base na variável "velocidade", permitindo deixar o jogo mais rápido ou mais lento.</p>
+    <p class="explicacao">👉 Os textos de pontuação são atualizados em tempo real com os valores das variáveis PontosPlayer1 e PontosPlayer2.</p>
+    <p class="explicacao">👉 A variável "bola" recebe o valor da posição Y da bola, servindo como referência para o movimento automático do personagem2.</p>
+    <p class="explicacao">👉 A cada 5 segundos adicionamos 10 à variável velocidade que foi passada para a bola.</p>
+    
+  </div>
+  <div class="bloco">
+    <h2>🙍‍♀️🙍‍♂️ Desafio 2 Players</h2>
+
+    <p class="explicacao">👉 Depois de terminar e testar seu jogo com essas programações com o personagem2 sendo controlado automaticamente, faça com que o personagem2 seja controlado pelas teclas seta para cima e seta para baixo.</p>
+    </div>
+  <div class="bt">
+    <button class="voltar">
+      <a href="./index.html">Voltar</a>
+  </button>
+    <button class="avancar">
+      <a href="./jogo3.html">Avançar</a>
+  </button>
+  </div>
+  <script src="./script.js"></script>
+</body>
+</html>

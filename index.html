@@ -102,11 +102,11 @@ Habilitado: Ativado (✔)
     <div class="bloco">
       <h2>🦖 Pular e abaixar</h2>
     <pre>
-1 - Teclado: Ao pressionar Barra de espaço      | dino: "simular comando" Simular Plataforma pressionando Pulo 
+1 - Teclado: Ao pressionar Barra de espaço  | dino: "simular comando" Simular Plataforma pressionando Pulo 
 
-2 - Teclado: C está pressionada                 | dino: Definir animação para "abaixar" (executar do início)
+2 - Teclado: C está pressionada             | dino: Definir animação para "abaixar" (executar do início)
 
-3 - Teclado: Quando C for solta                 | dino: Definir animação para "correndo" (executar do início)      
+3 - Teclado: Quando C for solta             | dino: Definir animação para "correndo" (executar do início)      
     </pre>
     <p class="explicacao">👉 Na linha 1 temos que simular o comando de pulo do comportamento plataforma.</p>
     <p class="explicacao">👉 Linha 2 e 3 trocamos a animação que temos dentro do personagem dino.</p>   
@@ -123,8 +123,8 @@ Gerador não precisa de nenhum comportamento.
     <pre>
 🌎 Global: número tipo = 0
 
-4 - Sistema: A cada 3 segundos                  | Sistema:"definir valor" Definir tipo para escolher(0,1,2,3,4,5) "escolher é choose"
-                                                | geradorcacto: "dar origem" Gerar cacto na camada 0 (ponto X=0, hierarquia: Falso)
+4 - Sistema: A cada 3 segundos              | Sistema:"definir valor" Definir tipo para escolher(0,1,2,3,4,5) "escolher é choose"
+                                            | geradorcacto: "dar origem" Gerar cacto na camada 0 (ponto X=0, hierarquia: Falso)
     </pre>
     <p class="explicacao">👉 Temos 5 cactos dentro da nossa animação, equivalentes do 0 ao 4.</p>
     <p class="explicacao">👉 O número 5 é nosso pássaro, por isso colocamos de 0,1,2,3,4,5.</p>
@@ -154,16 +154,16 @@ Habilitado: Ativado (✔)
     <div class="bloco">
     <h2>🎋 Mover e trocar cacto</h2>
     <pre>
-5 - Sistema: "comparar variável" tipo = 5       | cacto: Definir animação para "pássaro" (executar do início)
-                                                | cacto: Definir Invertido
-                                                | cacto: Definir Espelhado
+5 - Sistema: "comparar variável" tipo = 5   | cacto: Definir animação para "pássaro" (executar do início)
+                                            | cacto: Definir Invertido
+                                            | cacto: Definir Espelhado
 
-6 - cacto: Ao criar                            | cacto: Definir quadro da animação para tipo "variável"  
-                                                | cacto: MoverPara posição (-50, Self.Y) (Direto) "-50 no x" "Self.Y no Y" 
-                                                | cacto: Definir Invertido  
-                                                | cacto: Parar animação 
+6 - cacto: Ao criar                         | cacto: Definir quadro da animação para tipo "variável"  
+                                            | cacto: MoverPara posição (-50, Self.Y) (Direto) "-50 no x" "Self.Y no Y" 
+                                            | cacto: Definir Invertido  
+                                            | cacto: Parar animação 
 
-7 - cacto:"Mover para" Ao chegar               | cacto: Destruir
+7 - cacto:"Mover para" Ao chegar            | cacto: Destruir
     cacto: "comparar x" X <= -50
     </pre>
     <p class="explicacao">👉 Se der o número 5 na variável tipo, definimos a animação para "pássaro".</p>
@@ -176,7 +176,7 @@ Habilitado: Ativado (✔)
   <div class="bloco">
     <h2>🦖 Colidir com cacto</h2>
   <pre>
-8 - dino: Ao colidir com cacto                 | Sistema: Ir para tela "Game Over"     
+8 - dino: Ao colidir com cacto              | Sistema: Ir para tela "Game Over"     
   </pre>
   <p class="explicacao">👉 Se o dino colidir com o ator cacto, vamos para layout game over.</p> 
 </div>
@@ -210,11 +210,11 @@ Habilitado: Ativado [✔]
 Comportamento: Não precisa de comportamento  
       </pre>
 <pre>
-9 - nuvem "comparar x" X <= -50                 | nuvem: Destruir
-                                                | geradornuvem: Criar nuvem na camada 0 (ponto X=0, hierarquia: Falso)
+9 - nuvem "comparar x" X <= -50             | nuvem: Destruir
+                                            | geradornuvem: Criar nuvem na camada 0 (ponto X=0, hierarquia: Falso)
 
-10 - nuvem: Ao criar                            | Definir Invertido
-                                                | Definir Não espelhado   
+10 - nuvem: Ao criar                        | Definir Invertido
+                                            | Definir Não espelhado   
 </pre>
 <p class="explicacao">👉 Na linha 9 verificamos se a nuvem chegou na posição x, se chegou destrói.</p>
 <p class="explicacao">👉 Após chegar na posição, o gerador cria uma nova nuvem que respeita essa mesma regra. Move automaticamente e destrói ao chegar na posição.</p>
@@ -227,12 +227,12 @@ Comportamento: Não precisa de comportamento
 <pre>
 🌎 Global: número tipo = 0
 
-11 - Sistema: Ao iniciar layout                 | Definir Invertido
-                                                | Definir Não espelhado        
+11 - Sistema: Ao iniciar layout             | Definir Invertido
+                                            | Definir Não espelhado        
                                                 
-12 - Sistema: A cada 1 segundo                  | Sistema: Adicionar 1 à variável "tempo"  
+12 - Sistema: A cada 1 segundo              | Sistema: Adicionar 1 à variável "tempo"  
 
-13 - Sistema: A cada tick                       | Texto: Definir texto para "tempo jogado: &tempo"
+13 - Sistema: A cada tick                   | Texto: Definir texto para "tempo jogado: &tempo"
 </pre>
 <p class="explicacao">👉 Na linha 11 só estamos deixando a imagem da nuvem no ângulo certo e garantindo que ela não vire ao contrário.</p>
 <p class="explicacao">👉 A cada 1 segundo aumentamos 1 na variável tempo.</p>
