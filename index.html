@@ -214,8 +214,8 @@ Comportamento: Não precisa de comportamento
 9 - nuvem "comparar x" X <= -50             | nuvem: Destruir
                                             | geradornuvem: Criar nuvem na camada 0 (ponto X=0, hierarquia: Falso)
 
-10 - nuvem: Ao criar                        | Definir Invertido
-                                            | Definir Não espelhado   
+10 - nuvem: Ao criar                        | nuvem: Definir Invertido
+                                            | nuvem: Definir Não espelhado   
 </pre>
 <p class="explicacao">👉 Na linha 9 verificamos se a nuvem chegou na posição x, se chegou destrói.</p>
 <p class="explicacao">👉 Após chegar na posição, o gerador cria uma nova nuvem que respeita essa mesma regra. Move automaticamente e destrói ao chegar na posição.</p>
@@ -228,8 +228,8 @@ Comportamento: Não precisa de comportamento
 <pre>
 🌎 Global: número tipo = 0
 
-11 - Sistema: Ao iniciar layout             | Definir Invertido
-                                            | Definir Não espelhado        
+11 - Sistema: Ao iniciar layout             | nuvem: Definir Invertido
+                                            | nuvem: Definir Não espelhado        
                                                 
 12 - Sistema: A cada 1 segundo              | Sistema: Adicionar 1 à variável "tempo"  
 
