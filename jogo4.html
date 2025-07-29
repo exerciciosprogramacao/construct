@@ -18,40 +18,244 @@
     </div>
   
     <div class="bloco">
-      <h2>🏓</h2>
+      <h2>🎮 Jogo</h2>
+      <p class="explicacao">👉 Esse jogo foi feito com o tamanho de layout de 854 x 480.</p>
+      <p class="explicacao">👉 Esse jogo foi feito com o tamanho de exibição de tela de 854 x 480.</p>
+      <p class="explicacao">👉 Comece inserindo todos os personagens/objetos e o cenário no jogo.</p>
+      <p class="explicacao">👉 Se você usou os sprites fornecidos, todas as colisões "hitbox" já devem estar corretas, assim como os pontos de imagem.</p>
+      <p class="explicacao">👉 Lembre-se de ajustar as <strong>elevações Z</strong> para que tudo fique certinho na tela.</p>
+      <p class="explicacao">👮‍♀️👮‍♂️ <strong>Verifique tudo</strong> certinho antes de continuar!</p>
       <pre>
+👉 Tipos de objetos
   
+barreira = Sprite
+explosão = Sprite
+fundo = Sprite
+gameover = Sprite
+invasor = Sprite
+Mouse = Mouse
+player = Sprite
+Teclado = Teclado
+textoacertados = Texto
+Textovitoria = Texto
+tiro = Sprite
+vitoria = Sprite
+  
+👉 Layouts              
+  
+space 1
+space 2
+gameOver
+vitoria
+  
+👉 Folhas de Eventos
+  
+Folha de space1
+Folha de space2
+Folha de gameOver
+folha de vitoria
+
       </pre>
-      <p class="explicacao">👉</p>
-  
+    <p class="explicacao">👉 Não esqueça de <strong>criar os layouts com suas folhas de eventos</strong></p>
     </div>
   
     <div class="bloco">
-      <h2>🧱</h2>
-      <pre>
+    <h2>🛸 Nave Player</h2>
+  <pre>
+👉 Comportamentos
+
+⚙ Comportamento: RestritoAoLayout
+Restrito por: Borda
+
+⚙ Comportamento: 8Direções
+Velocidade máxima: 300
+Aceleração: 1000
+Desaceleração: 1000
+Direções: Esquerda e direita
+Definir ângulo: Não
+Permitir deslizar: Desativado (□)
+Controles padrão: Ativado (✔)
+Habilitado: Ativado (✔)
+  </pre>
+  <p class="explicacao">👉 Restrito ao Layout faz ele não sair da tela.</p> 
+</div>
+
+  <div class="bloco">
+    <pre>
+1 - Teclado: D está pressionada             | player: Simular 8Direções ao pressionar Direita
+
+2 - Teclado: A está pressionada             | player: Simular 8Direções ao pressionar Esquerda
+
+3 - player: Ao colidir com invasor          | Sistema: Aguarde 1.0 segundos
+                                            | Sistema: Ir para "gameOver"
+    </pre>
+    <p class="explicacao">👉 Linha 1 pressionar D faz o player mover-se para a direita.</p>
+    <p class="explicacao">👉 Linha 2 pressionar A faz o player mover-se para a esquerda.</p>
+    <p class="explicacao">👉 Linha 3 se o player colidir com um invasor, após 1s vai para o layout "gameOver".</p> 
+  </div>
+  <h2>🚀 Tiro</h2>
+
+  <pre>
+👉 Comportamentos
+
+⚙ Comportamento: DestruirForaDoLayout
+
+⚙ Comportamento: Projétil
+
+Velocidade: 250
+Aceleração: 0
+Gravidade: 0
+Ricochetear em sólidos: Desativado (□)
+Definir ângulo: Ativado (✔)
+Passo: Desativado (□)
+Habilitado: Ativado (✔)
+  </pre>
+<pre>
+🌎 Global: número Inimigos = 0
+
+4 - tiro: Ao colidir com invasor            | Sistema: Adicionar 1 para 🌎Inimigos
+                                            | tiro: Destruir
+                                            | invasor: Gerar "explosão" na camada 0 (ponto de imagem 1)
+                                            | invasor: Destruir
+                                            | Sistema: Aguarde 0.3 segundos (usar escala de tempo: Verdadeiro)
+                                            | explosão: Destruir
+</pre>
+<p class="explicacao">👉 Quando um tiro acerta um invasor, aumenta o contador de inimigos destruídos, mostra uma explosão e remove os dois objetos após 0.3s.</p>
+  <div class="bloco">
+    <h2>🖱 Disparo com Mouse e ⌨ Teclado</h2>
+    <pre>
+🌎 Global: número recarga = 0
+
+5 - Mouse: Ao botão esquerdo clique         | Sistema: Definir 🌎recarga para 1
+    Sistema: 🌎recarga = 0                  | player: Gerar "tiro" na camada 0 (ponto de imagem 1)
+                                            | Sistema: Aguarde 0.8 segundos (usar escala de tempo: Verdadeiro)
+                                            | Sistema: Definir 🌎recarga para 0
+
+6 - Teclado: Ao pressionar Barra de espaço  | Sistema: Definir 🌎recarga para 1
+    Sistema: 🌎recarga = 0                  | player: Gerar "tiro" na camada 0 (ponto de imagem 1)
+                                            | Sistema: Aguarde 0.8 segundos (usar escala de tempo: Verdadeiro)
+                                            | Sistema: Definir 🌎recarga para 0
+    </pre>
+  <p class="explicacao">👉 Se o botão esquerdo do mouse for clicado e a variável recarga for 0, um tiro é disparado do ponto 1 da nave.</p>
+  <p class="explicacao">👉 Após 0.8s, recarga volta para 0, permitindo novo disparo.</p>
+  <o class="explicacao">👉 Na linha 6 igualmente ao disparo com mouse, mas usando a barra de espaço.</o>
+  </div>
   
-      </pre>
-      <p class="explicacao">👉</p>
-    </div>
+  <div class="bloco">
+    <h2>👾 Invasor</h2>
+    <pre>
+👉 Comportamentos
+
+⚙ Comportamento: Sólido
+
+Habilitado: Ativado (✔)
+
+⚙ Comportamento: Senóide
+
+Movimento: Horizontal
+Onda: Senoidal
+Período: 3
+Período aleatório: 0
+Desvio de período: 0
+Magnitude: 125
+Magnitude aleatória: 0
+Habilitado: Ativado (✔)
+Visualizar: Desativado (□)
+
+⚙ Comportamento: MoverPara
+
+Velocidade máxima: 20
+Aceleração: 40
+Desaceleração: 40
+Velocidade de rotação: 0
+Definir ângulo: Desativado (□)
+Parar em sólidos: Desativado (□)
+Habilitado: Ativado (✔)
+    </pre>
   
+<pre>
+7 - Sistema: A cada aleatório(1,3) segundos | invasor: MoverPara: Mover para (Self.X, 480)  
+</pre>
+<p class="explicacao">👉 Os invasores descem na tela a cada 1 a 3 segundos, indo até a coordenada Y 480 (parte inferior da tela)</p>
+
+    <h2>🔩 Armadilha</h2>
+<pre>
+👉 Comportamentos
+
+⚙ Comportamento: Projétil
+
+Velocidade: 600
+Aceleração: 0
+Gravidade: 0
+Ricochetear em sólidos: Desativado (□)
+Definir ângulo: Ativado (✔)
+Passo: Desativado (□)
+Habilitado: Ativado (✔)
+</pre>
+<p class="explicacao">👉 Vamos começar criando a variável pontos.</p>
+  <pre>
+🌎 Global: número Pontos = 10
+
+6 - armadilha: Ao criar                     | armadilha: Definir ângulo de movimento para 90 graus
+
+7 - armadilha: Ao colidir com chão          | armadilha: Destruir
+
+8 - armadilha: Ao colidir com personagem    | Sistema: Subtrair 2 de 🌎Pontos
+                                            | armadilha: Destruir
+                                            | criando: Gerar fogos na camada 0 (ponto 0, hierarquia: falso)
+                                            | personagem: Piscar: Piscar 0.1s visível 0.1s apagado por 1 segundo
+  </pre>
+  <p class="explicacao">👉 Linha 6 quando a armadilha é criada, ela começa a se mover para baixo ângulo 90°.</p>
+  <p class="explicacao">👉 Linha 7 se encostar no chão, a armadilha é destruída.</p>
+  <p class="explicacao">👉 Linha 8 se atingir o personagem, perde-se 2 pontos, a armadilha some, surgem efeitos visuais e o personagem pisca por 1 segundo.</p>
+  </div>
+
     <div class="bloco">
-      <h2>🏓</h2>
-      <pre>
-  
-      </pre>
-      <p class="explicacao">👉</p>
-      
-    </div>
-  
-    <div class="bloco">
-      <h2>⚽</h2>
-      <p class="explicacao">👉</p>
-      <pre>
-  
-      </pre>
-      <p class="explicacao">👉</p>
-  
-    </div>
+    <h2>📃 Texto, segunda fase</h2>
+    <pre>
+🌎 Global: número layout = 1
+
+9 - Sistema: 🌎Inimigos = 20                | Sistema: Aguarde 1.0 segundos (usar escala de tempo: Verdadeiro).
+                                            | Sistema: Ir para "space 2"
+                                            | Sistema: 🌎layout = 1
+
+10 - Sistema: A cada tick                   | textoinimigos: Definir texto para "Invasores destruídos: "&Inimigos
+    </pre>
+  <p class="explicacao">👉 Linha 9 quando 20 inimigos são destruídos, após 1s o jogo avança para o layout "space 2".</p>
+  <p class="explicacao">👉 Linha 10 atualiza o texto em tempo real mostrando quantos invasores foram destruídos..</p>
+</div>
+
+<div class="bloco">
+  <h2>📃 Folha de eventos da fase 2</h2>
+  <p class="explicacao">👉 Incluir folha de eventos significa que iremos usar uma programação já existente em outra folha nessa que estamos agora.</p>
+  <p class="explicacao">👉 Para fazer isso, 👉 clique com o botão direito do mouse na folha de eventos do space2 "segunda folha" 👉 Incluir folha de eventos 👉 Selecione a folha de eventos do jogo principal.</p>
+
+  <pre>
+Incluir Folha de space1 
+
+1 - Sistema: Ao iniciar layout              | Sistema: Redefinir variáveis globais para padrão (incluir estáticas: Falso)
+                                            | Sistema: Definir 🌎layout para 2
+
+2 - tiro: Ao colidir com barreira           | tiro: Destruir
+                                            | barreira: Gerar "explosão" na camada 0 (ponto de imagem 0, criar hierarquia: Falso, template: "")
+                                            | Sistema: Aguarde 0.3 segundos (usar escala de tempo: Verdadeiro).
+                                            | explosão: Destruir
+
+3 - Sistema: 🌎Inimigos = 23                | Sistema: Aguarde 1 segundos (usar escala de tempo: Verdadeiro).
+    Sistema: 🌎layout = 2                   | Sistema: Ir para tela "Vitoria"
+                                            
+4 - Sistema: A cada tick                    | textoacertados: Definir texto para "Invasores destruídos: "&Inimigos
+  </pre>
+  <p class="explicacao">👉 Linha 1 ao iniciar o layout, todas as variáveis globais são resetadas e o layout atual é marcado como 2.</p>
+  <p class="explicacao">👉 Linha 2 quando o tiro acerta a barreira, ele é destruído, gera uma explosão temporária e essa explosão também é removida após 0.3s.</p>
+  <p class="explicacao">👉 Linha 3 quando 23 inimigos forem destruídos no layout 2, após 1 segundo o jogo avança para a tela de vitória.</p>
+  <p class="explicacao">👉 Linha 4 atualiza continuamente o texto com a quantidade de inimigos destruídos.</p>
+</div>
+
+<h2>💰 Desafio Game Over e Vitória</h2>
+<p class="explicacao">👉 Depois de terminar e testar seu jogo com essas programações, faça voltar da tela de game over e vitória para o jogo, após esperar 2 segundos.</p>
+<p class="explicacao">👉 Não se esqueça de resetar as variáveis. "Redefinir variáveis globais"</p>
+<p class="explicacao">👉 Esse desafio concede 💰 5 moedas.</p>
 
   <div class="bt">
     <button class="voltar">
@@ -64,3 +268,5 @@
   <script src="./script.js"></script>
 </body>
 </html>
+
+

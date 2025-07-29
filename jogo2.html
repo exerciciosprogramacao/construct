@@ -31,7 +31,7 @@
     <p class="explicacao">👉 Esse jogo foi feito com o tamanho de layout de 854 x 480.</p>
     <p class="explicacao">👉 Esse jogo foi feito com o tamanho de exibição de tela de 854 x 480.</p>
     <p class="explicacao">👉 Comece inserindo todos os personagens/objetos e o cenário no jogo.</p>
-    <p class="explicacao">👉 Todos os objetos deste jogo são do tipo Sprite, menos o teclado e textos.</p>
+    <p class="explicacao">👉 Todos os objetos deste jogo são do tipo Sprite, menos o teclado e os textos.</p>
     <p class="explicacao">👉 Lembre-se de ajustar as <strong>elevações Z</strong> para que tudo fique certinho na tela.</p>
     <p class="explicacao">👮‍♀️👮‍♂️ <strong>Verifique tudo</strong> certinho antes de continuar!</p>
     <pre>
@@ -61,7 +61,7 @@ Folha do pong
   <pre>
 👉 Comportamentos
 
-Comportamento: sólido
+⚙ Comportamento: sólido
 
 Habilitado: Ativado (✔)
   </pre>
@@ -73,7 +73,7 @@ Habilitado: Ativado (✔)
     <pre>
 👉 Comportamentos
 
-Comportamento: 8Direções
+⚙ Comportamento: 8Direções
 
 Velocidade máxima: 1000
 Aceleração: 2000
@@ -101,15 +101,15 @@ Habilitado: Ativado (✔)
     <pre>
 👉 Comportamentos
 
-Comportamento: Projétil
+⚙ Comportamento: Projétil
 
 Velocidade: 400
 Aceleração: 0
 Gravidade: 0
-Ricochetear em sólidos: Ativado [✔]
-Definir ângulo: Ativado [✔]
-Passo: Desativado [ ]
-Habilitado: Ativado [✔] 
+Ricochetear em sólidos: Ativado (✔)
+Definir ângulo: Ativado (✔)
+Passo: Desativado (□)
+Habilitado: Ativado (✔) 
     </pre>
     <h2>🎱 Bola</h2>
 <p class="explicacao">💾 Vamos começar criando as variáveis globais: bola, PontosPlayer1, PontosPlayer2 e velocidade.</p>
@@ -126,11 +126,11 @@ Habilitado: Ativado [✔]
 
 5 - persbola: Colidir com personagem2       | persbola: Ricochetear (Projétil: personagem2)
 
-6 - persbola: X > 795                       | Sistema: Adicionar 1 para PontosPlayer1
+6 - persbola: X > 795                       | Sistema: Adicionar 1 para 🌎PontosPlayer1
                                             | persbola: Definir posição para (422.5, 240)
                                             | persbola: Definir ângulo para aleatória(1,359) graus "aleatória é random"
 
-7 - persbola: X < 60                        | Sistema: Adicionar 1 para PontosPlayer2
+7 - persbola: X < 60                        | Sistema: Adicionar 1 para 🌎PontosPlayer2
                                             | persbola: Definir posição para (422.5, 240)
                                             | persbola: Definir ângulo para aleatória(1,359) graus "aleatória é random"
 </pre>
@@ -146,7 +146,7 @@ Habilitado: Ativado [✔]
       <pre>
 👉 Comportamentos 
 
-Comportamento: MovePara
+⚙ Comportamento: MovePara
 
 Velocidade máxima: 1200
 Aceleração: 2200
@@ -163,12 +163,12 @@ Habilitado: Ativado (✔)
     <h2>🏏 Personagem 2 🎱 Velocidade da bola e 📃 textos</h2>
     <pre>
 8 - Sistema: A cada tick                    | personagem2: MoverPara (self.X, bola) (Direto)
-                                            | persbola: Definir velocidade de Projétil para velocidade "variável"
+                                            | persbola: Definir velocidade de Projétil para 🌎velocidade "variável"
                                             | textopontos1: Definir texto para "Pontos P1: "&PontosPlayer1
                                             | textopontos2: Definir texto para "Pontos P2: "&PontosPlayer2
-                                            | Sistema: Definir bola para persbola.Y "variável"
+                                            | Sistema: Definir 🌎bola para persbola.Y "variável"
 
-9 - Sistema: A cada 5 segundos              | Sistema: Adicionar 10 para velocidade "variável"                                            
+9 - Sistema: A cada 5 segundos              | Sistema: Adicionar 10 para 🌎velocidade "variável"                                            
     </pre>
     <p class="explicacao">👉 A linha 8 acontece a cada tick (atualização do jogo), ou seja, o tempo todo.</p>
     <p class="explicacao">👉 O personagem2 se move na direção da variável "bola", fazendo com que ele siga a bola automaticamente.</p>
@@ -179,10 +179,12 @@ Habilitado: Ativado (✔)
     
   </div>
   <div class="bloco">
-    <h2>🙍‍♀️🙍‍♂️ Desafio 2 Players</h2>
+    <h2>💰 Desafio 2 Players</h2>
 
     <p class="explicacao">👉 Depois de terminar e testar seu jogo com essas programações com o personagem2 sendo controlado automaticamente, faça com que o personagem2 seja controlado pelas teclas seta para cima e seta para baixo.</p>
-    </div>
+    <p class="explicacao">👉 Não se esqueça de resetar as variáveis. "Redefinir variáveis globais"</p>
+    <p class="explicacao">👉 Esse desafio concede 💰 5 moedas.</p>
+  </div>
   <div class="bt">
     <button class="voltar">
       <a href="./index.html">Voltar</a>

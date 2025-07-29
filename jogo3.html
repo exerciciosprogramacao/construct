@@ -20,48 +20,238 @@
   </div>
 
   <div class="bloco">
-    <h2>🏓</h2>
+    <h2>🎮 Jogo</h2>
+    <p class="explicacao">👉 Esse jogo foi feito com o tamanho de layout de 854 x 480.</p>
+    <p class="explicacao">👉 Esse jogo foi feito com o tamanho de exibição de tela de 854 x 480.</p>
+    <p class="explicacao">👉 Comece inserindo todos os personagens/objetos e o cenário no jogo.</p>
+    <p class="explicacao">👉 Chão é um Plano de Fundo em Blocos, todos os outros objetos deste jogo são do tipo Sprite, menos o teclado e os três textos.</p>
+    <p class="explicacao">👉 O Personagem deve ter uma animação de parado e andando.</p>
+    <p class="explicacao">👉 Se você usou os sprites fornecidos, todas as colisões "hitbox" já devem estar corretas, assim como os pontos de imagem.</p>
+    <p class="explicacao">👉 Lembre-se de ajustar as <strong>elevações Z</strong> para que tudo fique certinho na tela.</p>
+    <p class="explicacao">👮‍♀️👮‍♂️ <strong>Verifique tudo</strong> certinho antes de continuar!</p>
     <pre>
+👉 Tipos de objetos
 
+chão = Plano de Fundo em Blocos
+armadilha = Sprite
+gerador = Sprite
+fogos = Sprite
+fruta = Sprite
+fundo = Sprite
+fundoGameOver = Sprite
+fundologo = Sprite
+fundoWin = Sprite
+personagem = Sprite
+Teclado = Teclado
+textoGameOver = Texto
+textopontos = Texto
+textoWin = Texto
+
+👉 Layouts              
+
+jogo
+vitória
+game over
+
+👉 Folhas de Eventos
+
+Folha do jogo
+Folha de vitória
+Folha de game over
     </pre>
-    <p class="explicacao">👉</p>
-
+  <p class="explicacao">👉 Não esqueça de <strong>criar mais os layouts com suas folhas de eventos</strong></p>
+  <p class="explicacao">👉 Na animação andando do personagem devemos deixar a opção de repetir desativada, velocidade 13.</p>
+  <p class="explicacao">👉 Na animação parado do personagem devemos ativar o repetir e deixar a velocidade em 5.</p>
+  <p class="explicacao">👉 No personagem gerador devemos criar mais um ponto de imagem, onde vai sair o personagem armadilha.</p>
   </div>
 
   <div class="bloco">
-    <h2>🧱</h2>
-    <pre>
+    <h2>🧱 Chão</h2>
+  <pre>
+👉 Comportamentos
 
+⚙ Comportamento: sólido
+
+Habilitado: Ativado (✔)
+  </pre>
+  <p class="explicacao">👉 Chão deve ser sólido, para o personagem não cair.</p> 
+</div>
+
+  <div class="bloco">
+    <h2>🧔 Personagem</h2>
+    <pre>
+👉 Comportamentos
+
+⚙ Comportamento: Plataforma
+
+Velocidade máxima: 800
+Aceleração: 1600
+Desaceleração: 5000
+Força do pulo: 650
+Gravidade: 1500
+Velocidade máxima de queda: 1000
+Pulo duplo: Desativado (□)
+Sustentação do pulo: 0
+Controles padrão: Desativado (✔)
+Habilitado: Ativado (✔)
+
+⚙ Comportamento: DarAVolta
+
+Dar a volta a: Layout
+
+⚙ Comportamento: Piscar
     </pre>
-    <p class="explicacao">👉</p>
+    <p class="explicacao">👉 Plataforma faz o personagem se mover, pular e cair.</p>
+    <p class="explicacao">👉 Dar a volta faz o personagem entrar em um lado do layout e sair do outro.</p> 
+    <p class="explicacao">👉 Piscar fará o personagem piscar ao levar dano.</p>  
   </div>
 
   <div class="bloco">
-    <h2>🏓</h2>
+    <h2>🧔 Mover</h2>
     <pre>
+1 - Teclado: D está pressionada             | personagem: Simular Plataforma pressionando Direita
+                                            | personagem: Definir animação para "andando" (executar do início)
+                                            | personagem: Definir Espelhado
 
+2 - Teclado: A está pressionada             | personagem: Simular Plataforma pressionando Esquerda
+                                            | personagem: Definir animação para "andando" (executar do início)
+                                            | personagem: Definir Não espelhado
+
+3 - Teclado: Quando D for solta             | personagem: Definir animação para "parado" (executar do início)
+    Teclado:❌ A está pressionada
+
+4 - Teclado: Quando A for solta             | personagem: Definir animação para "parado" (executar do início)
+    Teclado:❌ D está pressionada      
     </pre>
-    <p class="explicacao">👉</p>
-    
+  <p class="explicacao">👉 Linha 1 pressionar D move o personagem para a direita, ativa a animação "andando" e espelha a imagem.</p>
+  <p class="explicacao">👉 Linha 2 pressionar A move para a esquerda, ativa a mesma animação e remove o espelhamento.</p>
+  <p class="explicacao">👉 Linha 3 ao soltar D, se A não estiver pressionada, o personagem para e muda para a animação "parado".</p>
+  <p class="explicacao">👉 Linha 3 temos uma outra condição e a inversão da ação. 👉Botão direito em cima dessa outra condição 👉 X Inverter</p>
+  <p class="explicacao">👉 Linha 4 ao soltar A, se D não estiver pressionada, também muda para "parado".</p>
+  <p class="explicacao">👉 Linha 4 temos uma outra condição e a inversão da ação. 👉Botão direito em cima dessa outra condição 👉 X Inverter</p>
   </div>
-
+  
   <div class="bloco">
-    <h2>⚽</h2>
-    <p class="explicacao">👉</p>
+    <h2>🏗 Gerador</h2>
+    <p class="explicacao">👉 Temos 1 Sprite do objeto gerador, mas temos 3 deles na tela ("instâncias").</p>
+    <p class="explicacao">👉 A única coisa que muda entre eles é o período e magnitude.</p>
+
     <pre>
+👉 Comportamentos
 
+⚙ Comportamento: Senóide 
+
+👉 Gerador da esquerda         👉 Gerador do meio              👉 Gerador da direita
+Movimento: Horizontal           Movimento: Horizontal           Movimento: Horizontal
+Onda: Senoidal                  Onda: Senoidal                  Onda: Senoidal
+Período: 3                      Período: 4                      Período: 3
+Período aleatório: 0            Período aleatório: 0            Período aleatório: 0
+Desvio de período: 0            Desvio de período: 0            Desvio de período: 0
+Magnitude: 170                  Magnitude: 380                  Magnitude: 170
+Magnitude aleatória: 0          Magnitude aleatória             Magnitude aleatória
+Habilitado: Ativado (✔)         Habilitado: Ativado (✔)         Habilitado: Ativado (✔)
+Visualizar: Desativado (□)      Visualizar: Desativado (□)      Visualizar: Desativado (□)
     </pre>
-    <p class="explicacao">👉</p>
+    <p class="explicacao">👉 Senóide faz o personagem se mover conforme seu tipo de onda, sempre indo e voltando.</p>
+<pre>
+5 - Sistema: A cada aleatório(2,5) segundos | gerador: Gerar armadilha na camada 0 (ponto 1, hierarquia: Falso)
+</pre>
+<p class="explicacao">👉 De 2 a 5 segundos geramos a armadilha no ponto de imagem 1.</p>
 
+    <h2>🔩 Armadilha</h2>
+<pre>
+👉 Comportamentos
+
+⚙ Comportamento: Projétil
+
+Velocidade: 600
+Aceleração: 0
+Gravidade: 0
+Ricochetear em sólidos: Desativado (□)
+Definir ângulo: Ativado (✔)
+Passo: Desativado (□)
+Habilitado: Ativado (✔)
+</pre>
+<p class="explicacao">👉 Vamos começar criando a variável pontos.</p>
+  <pre>
+🌎 Global: número Pontos = 10
+
+6 - armadilha: Ao criar                     | armadilha: Definir ângulo de movimento para 90 graus
+
+7 - armadilha: Ao colidir com chão          | armadilha: Destruir
+
+8 - armadilha: Ao colidir com personagem    | Sistema: Subtrair 2 de 🌎Pontos
+                                            | armadilha: Destruir
+                                            | criando: Gerar fogos na camada 0 (ponto 0, hierarquia: falso)
+                                            | personagem: Piscar: Piscar 0.1s visível 0.1s apagado por 1 segundo
+  </pre>
+  <p class="explicacao">👉 Linha 6 quando a armadilha é criada, ela começa a se mover para baixo ângulo 90°.</p>
+  <p class="explicacao">👉 Linha 7 se encostar no chão, a armadilha é destruída.</p>
+  <p class="explicacao">👉 Linha 8 se atingir o personagem, perde-se 2 pontos, a armadilha some, surgem efeitos visuais e o personagem pisca por 1 segundo.</p>
   </div>
-  <div class="bt">
-    <button class="voltar">
-      <a href="./jogo2.html">Voltar</a>
+
+    <div class="bloco">
+      <h2>❤ Coração</h2>
+      <pre>
+👉 Comportamentos
+
+⚙ Comportamento: Projétil
+
+Velocidade: 600
+Aceleração: 0
+Gravidade: 0
+Ricochetear em sólidos: Desativado (□)
+Definir ângulo: Ativado (✔)
+Passo: Desativado (□)
+Habilitado: Ativado (✔)
+</pre>
+<pre>
+9 - Sistema: Ao iniciar layout              | fruta: Definir X para aleatório(25, 833)
+                                            | fruta: Definir o ângulo de movimento de Projétil para 90 graus
+
+10 - fruta: Ao colidir com chão             | fruta: Definir Y para 21
+                                            | fruta: Definir X para aleatório(25, 833)
+                                            | fruta: Definir o ângulo de movimento de Projétil para 90 graus
+                                            | Sistema: Subtrair 1 de 🌎Pontos
+
+11 - personagem: Ao colidir com fruta       | Sistema: Adicionar 1 para 🌎Pontos
+                                            | fruta: Definir Y para 21
+                                            | fruta: Definir X para aleatório(25, 833)
+                                            | fruta: Definir o ângulo de movimento de Projétil para 90 graus 
+</pre>
+<p class="explicacao">👉 Linha 9 quando o layout inicia, a fruta aparece em uma posição X aleatória e começa a cair.</p>
+<p class="explicacao">👉 Linha 10 se a fruta cair no chão, ela volta ao topo em nova posição e perde-se 1 ponto.</p>
+<p class="explicacao">👉 Linha 11 se o personagem pegar a fruta, ganha 1 ponto e ela reinicia no topo com nova posição.</p>
+    </div>
+
+    <div class="bloco">
+    <h2>📃 Texto, vitória e game over</h2>
+    <pre>
+12 - Sistema: A cada tick                   | textopontos: Definir texto para "Pontos: &Pontos"
+
+13 - Sistema: 🌎Pontos ≥ 50                 | Sistema: Ir para tela "Vitória"
+
+14 - Sistema: 🌎Pontos ≤ 0                  | Sistema: Ir para tela "Game over"
+    </pre>
+  <p class="explicacao">👉 Linha 12 atualiza o texto na tela com a pontuação em tempo real.</p>
+  <p class="explicacao">👉 Linha 13 se o jogador atingir 50 pontos ou mais, vai para a tela de vitória.</p>
+  <p class="explicacao">👉 Linha 14 se os pontos chegarem a 0 ou menos, o jogo termina na tela de "Game over".</p>
+</div>
+
+<h2>💰 Desafio Game Over e Vitória</h2>
+<p class="explicacao">👉 Depois de terminar e testar seu jogo com essas programações, faça voltar da tela de game over e vitória para o jogo, após esperar 2 segundos.</p>
+<p class="explicacao">👉 Não se esqueça de resetar as variáveis. "Redefinir variáveis globais"</p>
+<p class="explicacao">👉 Esse desafio concede 💰 5 moedas.</p>
+
+<div class="bt">
+  <button class="voltar">
+    <a href="./jogo2.html">Voltar</a>
   </button>
-    <button class="avancar">
-      <a href="./jogo4.html">Avançar</a>
+  <button class="avancar">
+    <a href="./jogo4.html">Avançar</a>
   </button>
-  </div>
-  <script src="./script.js"></script>
+</div>
+<script src="./script.js"></script>
 </body>
 </html>
+
