@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercícios</title>
+  <link rel="stylesheet" href="./jogo4.css">
+  <link rel="icon" type="image/png" href="./img/logocons.png">
+</head>
+<body>
+  <div class="btt">
+    <button class="avancar">💰 15</button>
+    <button class="avancar" onclick="toggleDarkMode()">👓</button>
+  </div>
+  <h1 class="tit">📘 Documentação do Projeto - Player vs Player</h1>
+  <div class="image">
+    <iframe height="167" frameborder="0" src="https://itch.io/embed/3759111" width="552">
+      <a href="https://exerciciosprogramacao.itch.io/pac90">pac90% por exerciciosprogramacao</a>
+    </iframe>
+  </div>
+
+  <div class="bloco">
+    <h2>🎮 Jogo</h2>
+    <p class="explicacao">👉 Este jogo foi feito com o tamanho de layout de 225 x 248.</p>
+    <p class="explicacao">👉 Este jogo foi feito com o tamanho de exibição de tela de 225 x 248.</p>
+    <p class="explicacao">👉 Comece inserindo todos os personagens/objetos e o cenário no jogo.</p>
+    <p class="explicacao">👉 O personagem Pacman deve ter uma animação para cada lado.</p>
+    <p class="explicacao">👉 Se você usou os sprites fornecidos, todas as colisões "hitbox" já devem estar corretas, assim como os pontos de imagem.</p>
+    <p class="explicacao">👉 Lembre-se de ajustar as <strong>elevações Z</strong> para que tudo fique certinho na tela.</p>
+    <p class="explicacao">👮‍♀️👮‍♂️ <strong>Verifique tudo</strong> certinho antes de continuar!</p>
+<pre>
+👉 Tipos de objetos
+  
+cereja = Sprite
+colisoes = Sprite
+fantasma1 = Sprite
+fantasma2 = Sprite
+fantasma3 = Sprite
+fantasma4 = Sprite
+pacman = Sprite
+paredeinvisivel = Sprite
+pontos = Sprite
+porta = Sprite
+mapa = Sprite
+gameover = Sprite
+Teclado = Teclado
+textopontos = Texto
+Textovitoria = Texto
+vitoria = Sprite
+  
+👉 Layouts              
+  
+pacman
+Vitória
+gameover
+  
+👉 Folhas de Eventos
+  
+folha gameover
+folha pacman
+folha vitória
+</pre>
+    <p class="explicacao">👉 Não se esqueça de <strong>criar os layouts com suas folhas de eventos.</strong></p>
+    <p class="explicacao">👉 Porta e colisões têm comportamento sólido.</p>
+    <p class="explicacao">👉 Porta tem animação de abrindo e fechando; o repetir está desativado.</p>
+  </div>
+
+  <div class="bloco">
+    <h2>😁 Pacman</h2>
+<pre>
+👉 Comportamentos
+
+⚙ Comportamento: DarAVolta
+
+Dar a volta a: Layout
+Adicionar / editar: Comportamentos
+
+⚙ Comportamento: 8Direções
+
+Velocidade máxima: 100
+Aceleração: 200
+Desaceleração: 500
+Direções: 4 direções
+Definir ângulo: Não
+Permitir deslizar: Ativado (✔)
+Controles padrão: Ativado (✔)
+Habilitado: Ativado (✔)
+
+⚙ Comportamento: Projétil
+
+Velocidade: 5
+Aceleração: 0
+Gravidade: 0
+Ricochetear em sólidos: Desativado (□)
+Definir ângulo: Ativado (□)
+Passo: Desativado (□)
+Habilitado: Ativado (□)
+</pre>
+    <p class="explicacao">👉 Não se esqueça das animações do Pacman.</p> 
+    <p class="explicacao">👉 Abaixo temos duas variáveis, uma do tipo número e outra booleana.</p>   
+  </div>
+
+  <div class="bloco">
+<pre>
+🌎 Global número pontos = 0
+🌎 Global booleana porta = verdadeiro
+
+1 - Teclado: D está pressionada             | pacman: Definir Projétil como Habilitado
+                                            | pacman: Definir animação para "direita" (executar do início)
+                                            | pacman: Definir o ângulo de movimento de Projétil para 0 graus
+                                            | pacman: Simular 8Direções ao pressionar Direita
+
+2 - Teclado: A está pressionada             | pacman: Definir Projétil como Habilitado
+                                            | pacman: Definir animação para "esquerda" (executar do início)
+                                            | pacman: Definir o ângulo de movimento de Projétil para 180 graus
+                                            | pacman: Simular 8Direções ao pressionar Esquerda
+
+3 - Teclado: W está pressionada             | pacman: Definir Projétil como Habilitado
+                                            | pacman: Definir animação para "cima" (executar do início)
+                                            | pacman: Definir o ângulo de movimento de Projétil para 270 graus
+                                            | pacman: Simular 8Direções ao pressionar Cima
+
+4 - Teclado: S está pressionada             | pacman: Definir Projétil como Habilitado
+                                            | pacman: Definir animação para "baixo" (executar do início)
+                                            | pacman: Definir o ângulo de movimento de Projétil para 90 graus
+                                            | pacman: Simular 8Direções ao pressionar Baixo
+
+5 - pacman: Ao colidir com colisoes         | pacman: Definir Projétil como Desabilitado
+
+6 - pacman: Ao colidir com pontos           | Sistema: Adicionar 1 para 🌎pontos
+                                            | pontos: Destruir
+
+7 - pacman: Ao colidir com paredeinvisivel  | porta: Definir animação para "abrindo" (executar do início)
+    Sistema: 🌎pontos = 247
+
+8 - pacman: Ao colidir com paredeinvisivel  | porta: Definir animação para "fechando" (executar do início)
+    Sistema: ❌Definição 🌎porta            | Sistema: Definir 🌎porta para Verdadeiro    
+
+9 - pacman: Ao colidir com fantasma4        | pacman: Destruir
+    pacman: OR Ao colidir com fantasma2     | Sistema: Aguarde 2 segundos (usar escala de tempo: Verdadeiro).
+    pacman: OR Ao colidir com fantasma3     | Sistema: Ir para tela "gameover"
+    pacman: OR Ao colidir com fantasma1     | Sistema: Redefinir variáveis globais para padrão (incluir estáticas: Falso)
+
+10 - pacman: Ao colidir com cereja          | Sistema: Ir para tela "vitória"
+</pre>
+    <p class="explicacao">👉 Linha 1 pressionar D faz o player mover-se para a direita.</p>
+    <p class="explicacao">👉 Linha 2 pressionar A move o Pacman para a esquerda.</p>
+    <p class="explicacao">👉 Linha 3 pressionar W move o Pacman para cima.</p>
+    <p class="explicacao">👉 Linha 4 pressionar S move o Pacman para baixo.</p>
+    <p class="explicacao">👉 Linha 5 se o Pacman encostar em uma colisão, o movimento é bloqueado.</p>
+    <p class="explicacao">👉 Linha 6 ao pegar um ponto, soma 1 ponto e o ponto é destruído.</p>
+    <p class="explicacao">👉 Linha 7 se encostar na parede invisível com 247 pontos, a porta começa a abrir.</p>
+    <p class="explicacao">👉 Linha 8 se colidir com a parede sem ter os pontos, a porta se fecha e a variável "porta" é marcada como verdadeira.</p>
+    <p class="explicacao">👉 Linha 8 tem uma outra condição e a inversão da ação. 👉 Botão direito sobre essa condição 👉 X Inverter</p>
+    <p class="explicacao">👉 Linha 9 se o Pacman colidir com fantasmas, ele é destruído, ou o jogo espera 2s, ou acaba, ou reinicia variáveis — depende do fantasma.</p>
+    <p class="explicacao">👉 Linha 9 tem outras condições e a condição <strong>OU</strong>. 👉 Botão direito sobre essa linha 👉 Criar bloco OU</p>
+    <p class="explicacao">👉 Linha 10 se pegar a cereja, o jogo vai direto para a tela de vitória.</p> 
+  </div>
+
+  <h2>👻 Fantasmas 1 a 4</h2>
+<pre>
+👉 Comportamentos
+
+⚙ Comportamento: CampoDeVisão
+
+Obstáculos: Sólidos
+Alcance: 300
+Cone de visão: 360
+Usar células de colisão: Ativado (✔)
+
+⚙ Comportamento: Seguir
+
+Modo: Tempo
+Atraso: 2
+Atraso máximo: 2
+Taxa histórica: 2.5
+Seguir X: Ativado (✔)
+Seguir Y: Ativado (✔)
+Seguir elevação Z: Desativado (□)
+Seguir largura: Desativado (□)
+Seguir altura: Desativado (□)
+Seguir ângulo: Desativado (□)
+Seguir opacidade: Desativado (□)
+Seguir visibilidade: Desativado (□)
+Seguir destruído: Desativado (□)
+Habilitado: Ativado (✔)
+</pre>
+<pre>
+11 - fantasma1: Objeto está no campo de     | fantasma1: Seguir Objeto: Seguir pacman (da posição atual Falso)
+visão de pacman
+
+12 - fantasma2: Objeto está no campo de     | fantasma2: Seguir Objeto: Seguir pacman (da posição atual Falso)
+visão de pacman 
+
+13 - fantasma3: Objeto está no campo de     | fantasma3: Seguir Objeto: Seguir pacman (da posição atual Falso)
+visão de pacman 
+
+14 - fantasma4: Objeto está no campo de     | fantasma4: Seguir Objeto: Seguir pacman (da posição atual Falso)
+visão de pacman 
+</pre>
+  <p class="explicacao">👉 Linhas 11 a 14: quando o Pacman entra no campo de visão de qualquer fantasma, ele começa a persegui-lo automaticamente.</p>
+
+  <div class="bloco">
+    <h2>📃 Texto 📃pontos 🚪porta</h2>
+<pre>
+15 - Sistema: Ao iniciar layout             | porta: Definir animação para "abrindo" (executar do início)
+                                            | Sistema: Definir porta para Falso
+
+16 - Sistema: A cada tick                   | textopontos: Definir texto para "Pontos: "&pontos
+
+17 - Sistema: pontos = 247                  | Sistema: Criar objeto cereja na camada 0 em (116, 116), criar hierarquia: Falso, template: ""
+</pre>
+    <p class="explicacao">👉 Linha 15 ao iniciar o layout, a porta é aberta e a variável de controle "porta" é marcada como falsa.</p>
+    <p class="explicacao">👉 Linha 16 atualiza em tempo real o texto que exibe a quantidade de pontos.</p>
+    <p class="explicacao">👉 Linha 17 quando o jogador atinge 247 pontos, a cereja aparece na posição (116, 116).</p>
+  </div>
+
+  <h2>💰 Desafio Game Over e Vitória</h2>
+  <p class="explicacao">👉 Depois de terminar e testar seu jogo com essas programações, faça voltar da tela de game over e vitória para o jogo, após esperar 2 segundos.</p>
+  <p class="explicacao">👉 Não se esqueça de resetar as variáveis: "Redefinir variáveis globais".</p>
+  <p class="explicacao">👉 Este desafio concede 💰 5 moedas.</p>
+
+  <div class="bt">
+    <button class="voltar">
+      <a href="./jogo4.html">Voltar</a>
+    </button>
+    <button class="avancar">
+      <a href="./jogo6.html">Avançar</a>
+    </button>
+  </div>
+  <script src="./script.js"></script>
+</body>
+</html>
