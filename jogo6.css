@@ -29,9 +29,9 @@ body.dark a {
 }
 .btt{
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
-/* --------------------------------------------------    */
+/* --------------------------------------------------*/
 body {
   font-family: Arial, sans-serif;
   background-color: #f7f7f7;
@@ -83,8 +83,10 @@ a{
   max-width: 800px;
   display: flex;
   justify-content: center;
+  align-items: center;
   /* background: #eee;
   border-radius: 5px; */
+  flex-direction: column;
 }
 img{
   max-width: 700px;
