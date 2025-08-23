@@ -15,187 +15,33 @@
   <h1 class="tit">📘 Documentação do Projeto - GeoDash</h1>
   <div class="image">
 <iframe frameborder="0" src="https://itch.io/embed-upload/14738330?color=333333" allowfullscreen="" width="640" height="380"><a href="https://exerciciosprogramacao.itch.io/geodash">Play GeoDash on itch.io</a></iframe>    <ul>
-      <li>Um player ataca e o outro tenta defender com a tecla Q (p1) ou P(p2).</li>
-      <li>Assim que o ataque (espaço) é realizado a vez do player muda.</li>
-      <li>Preste atenção no outro jogador (do seu lado) para tentar prever quando o ataque vai acontecer.</li>
-      <li>Quem tirar toda vida do outro player primeiro ganha.</li>
+      <li>Clique espaço para pular.</li>
+      <li>O jogo tem pulo duplo.</li>
+      <li>Use "Esc" para pausar o jogo.</li>
+      <li>As bandeiras são os checkpoints.</li>
+      <li>No modo hard não tem bandeiras.</li>
     </ul>
   </div>
 <br>
 
 <div class="bloco">
   <h2>Arquivo do jogo</h2>
-  <a href="./arquivos jogos/1x1 pvp sem programação.c3p">clique aqui para baixar o arquivo do construct3</a>
+  <a href="">clique aqui para baixar o arquivo do construct3</a>
 </div>
 
   <div class="bloco">
     <h2>Variáveis globais</h2>
-    <img src="./img/imgjogo6/variaveis.png" alt="">
+    <img src="./img/imgjogo7/variáveis.png" alt="">
   </div>
 
   <div class="bloco">
     <h2>Objetos do jogo</h2>
-    <p class="explicacao">👉 Reiniciar é um botão</p>
-    <img src="./img/imgjogo6/tipos de objetos.png" alt="">
+    <img src="" alt="">
   </div>
   
 <div class="bloco">
-  <h2>Código do jogo</h2>
-  <pre>
-1 - Sistema: Ao iniciar layout          | Player1: Definir escala para 1.3  
-                                        | Player2: Definir escala para 1.3  
-                                        | Player2: Definir Espelhado  
-                                        | Sistema: Definir VezDoJogador para escolher(1,2)  
-                                        | Audio: Tocar 2 - Heavy Combat - Elven Battle (loop) com repetição, volume 10 dB (pan estéreo 0, tag "musica") 
-  </pre>
-  <p class="explicacao">👉 Quando o layout inicia, o tamanho (escala) do Player1 e do Player2 é definido para <strong>1.3</strong>.</p>
-<p class="explicacao">👉 O Player2 é configurado como <strong>espelhado</strong>, para ficar virado para o lado oposto do Player1.</p>
-<p class="explicacao">👉 O sistema escolhe aleatoriamente quem começa o jogo, podendo ser o <strong>Jogador 1</strong> ou o <strong>Jogador 2</strong>.</p>
-<p class="explicacao">👉 A música <em>Heavy Combat - Elven Battle</em> é reproduzida em <strong>loop infinito</strong>.</p>
-<hr>
-<pre>
-2 - Teclado: Ao pressionar Barra de espaço   | Sistema: Aguardar 0.12 segundos (usar escala de tempo: Verdadeiro)  
-    Sistema: Definir ataque                  |
-    Sistema: VidaP1 ≠ 0                      |
-    Sistema: VidaP2 ≠ 0                      |
-
-	3 - Sistema: VezDoJogador = 1         | Sistema: Chamar jogadaP1  
-                                              | Sistema: Definir ataque para Verdadeiro
-
-	4 - Sistema: VezDoJogador = 2         | Sistema: Chamar jogadaP2  
-                                              | Sistema: Definir ataque para Verdadeiro
-</pre>
-<p class="explicacao">👉 Quando o jogador pressiona a <strong>Barra de Espaço</strong>, o sistema aguarda <strong>0.12 segundos</strong> antes de executar as próximas ações.</p>
-<p class="explicacao">👉 Após a espera, o sistema ativa a variável <strong>ataque</strong>.</p>
-<p class="explicacao">👉 Essa ação só acontece se a <strong>Vida do Jogador 1</strong> e a <strong>Vida do Jogador 2</strong> forem diferentes de 0 (ou seja, ambos ainda estão vivos).</p>
-<p class="explicacao">👉 Se for a vez do <strong>Jogador 1</strong>, o sistema chama a função <strong>jogadaP1</strong> e define o ataque como <strong>Verdadeiro</strong>.</p>
-<p class="explicacao">👉 Se for a vez do <strong>Jogador 2</strong>, o sistema chama a função <strong>jogadaP2</strong> e também define o ataque como <strong>Verdadeiro</strong>.</p>
-<hr>
-<pre> 
-5 - Teclado: Ao pressionar Q                    | Player1: Definir animação para "block" (executar do início)  
-    Player1: A animação "idle" está em execução | Sistema: Definir p1Block para Verdadeiro  
-    Sistema: VezDoJogador = 2                   | Sistema: Aguardar 1 segundo (usar escala de tempo)  
-    Sistema: [X] Definição p1Block              | Sistema: Definir p1Block para Falso  
-    Sistema: VidaP1 ≠ 0                         
-
-6 - Teclado: Ao pressionar P                    | Player2: Definir animação para "block" (executar do início)  
-    Player2: A animação "idle" está em execução | Sistema: Definir p2Block para Verdadeiro  
-    Sistema: VezDoJogador = 1                   | Sistema: Aguardar 1 segundo (usar escala de tempo)  
-    Sistema: [X] Definição p2Block              | Sistema: Definir p2Block para Falso  
-    Sistema: VidaP2 ≠ 0
-</pre>
-<p class="explicacao">👉 Quando o jogador pressiona <strong>Q</strong> (Player1) ou <strong>P</strong> (Player2), o personagem executa a animação <em>"block"</em>, mas apenas se estiver na animação <em>"idle"</em> (parado).</p>
-<p class="explicacao">👉 O sistema define a variável de bloqueio (<strong>p1Block</strong> ou <strong>p2Block</strong>) como <strong>Verdadeiro</strong>.</p>
-<p class="explicacao">👉 Se for a vez do outro jogador, o sistema aguarda <strong>1 segundo</strong> e em seguida desativa o bloqueio, definindo a variável como <strong>Falso</strong>.</p>
-<p class="explicacao">👉 Esse bloqueio só funciona enquanto a <strong>vida do jogador</strong> for diferente de 0.</p>
-<p class="explicacao">🛡️ Dica: O bloqueio dura apenas 1 segundo e só pode ser ativado quando o personagem está parado.</p>
-<hr>
-<pre>
-7 - Player1: Quando animação "ataque" terminar       | Player1: Definir animação para "Idle" (executar do início)  
-    Player1: **OR** Quando animação "block" terminar |  
-    Player1: **OR** Quando animação "hit" terminar   |  
-
-8 - Player2: Quando animação "ataque" terminar       | Player2: Definir animação para "Idle" (executar do início)  
-    Player2: **OR** Quando animação "block" terminar |  
-    Player2: **OR** Quando animação "hit" terminar   |
-</pre>
-<p class="explicacao">👉 Quando a animação de <em>"ataque"</em>, <em>"block"</em> ou <em>"hit"</em> termina (tanto para o Player1 quanto para o Player2), o personagem volta automaticamente para a animação <em>"idle"</em>, iniciando-a do começo.</p>
-<p class="explicacao">🎬 Isso garante que, após qualquer ação, o jogador sempre retorne ao estado parado e pronto para a próxima jogada.</p>
-<hr>
-<pre>
-9 - Função: jogadaP1      
-                      |  
-	10 - Sistema: VezDoJogador = 1            | Áudio: Tocar "11_human_damage_1" (volume 0 dB)
-                                                  | Player1: Mover para o topo da camada
-                                                  | Player1: Definir animação para "ataque" (executar do início)
-                                                  | Sistema: Aguardar 1 segundo (escala de tempo)
-                                                  | Sistema: Definir VezDoJogador para 2
-                                                  | Sistema: Definir ataque para Falso  
-
-
-	11 - Player1: Animação "ataque" está em execução    | Player1: Definir animação para "hit" (executar do início)
-             Player2: [X] Animação "block" está em execução | Sistema: Subtrair 1 de VidaP2
-                                                            | Áudio: Tocar "26_sword_hit_1" (volume 0 dB, sem repetição) 
-
-12 - Função: jogadaP2                            |
-
-	13 - Sistema: VezDoJogador = 2            | Áudio: Tocar "11_human_damage_1" (volume 0 dB)
-                                                  | Player2: Mover para o topo da camada
-                                                  | Player2: Definir animação para "ataque" (executar do início)
-                                                  | Sistema: Aguardar 1 segundo (escala de tempo)
-                                                  | Sistema: Definir VezDoJogador para 1
-                                                  | Sistema: Definir ataque para Falso
-
-	14 - Player2: Animação "ataque" está em execução      | Player2: Definir animação para "hit" (executar do início)
-    	     Player1: [X] Animação "block" está em execução   | Sistema: Subtrair 1 de VidaP1
-                                                              | Áudio: Tocar "26_sword_hit_1" (volume 0 dB, sem repetição)     
-</pre>
-<p class="explicacao">👉 Quando é a vez de um jogador (<strong>VezDoJogador = 1 ou 2</strong>), a função <em>jogada</em> é chamada.</p>
-<p class="explicacao">👉 O jogador ativo toca o som <em>"11_human_damage_1"</em>, é movido para o topo da camada e inicia a animação <em>"ataque"</em>.</p>
-<p class="explicacao">👉 O sistema aguarda <strong>1 segundo</strong>, depois passa a vez para o outro jogador e define o <strong>ataque</strong> como <em>Falso</em>.</p>
-<p class="explicacao">👉 Durante a animação de ataque, se o oponente <strong>não estiver em bloqueio</strong>, o sistema:</p>
-<ul class="explicacao">
-  <li>🎞️ Define a animação do oponente como <em>"hit"</em>.</li>
-  <li>❤️ Subtrai <strong>1 ponto de vida</strong> do oponente.</li>
-  <li>🔊 Toca o som <em>"26_sword_hit_1"</em> (sem repetição).</li>
-</ul>
-<p class="explicacao">👉 Caso o oponente esteja em <strong>block</strong>, o ataque não causa dano.</p>
-<p class="explicacao">⚔️ Assim, cada jogador alterna sua vez de atacar, e o dano só é aplicado se o adversário não estiver bloqueando no momento.</p>
-<hr>
-<pre>
-15 - Sistema: A cada tick                    | BarraDeVida: Definir progresso para VidaP1
-                                             | BarraDeVida: Definir progresso para VidaP2
-                                             | Áudio: Definir volume de "musica" para -15 dB  
-
-16 - Sistema: VezDoJogador = 1               | botaoQ: Definir opacidade para 0
-     Sistema: Ativa uma vez                  | botaoP: Definir opacidade para 100
-                                             | texto: Definir texto para "Player 1"
-
-17 - Sistema: VezDoJogador = 2               | botaoQ: Definir opacidade para 100
-     Sistema: Ativa uma vez                  | botaoP: Definir opacidade para 0
-                                             | texto: Definir texto para "Player 2"
-</pre>
-<p class="explicacao">👉 A cada <em>tick</em> do jogo, as barras de vida são atualizadas para refletir os valores de <strong>VidaP1</strong> e <strong>VidaP2</strong>. Além disso, o volume da música de fundo é ajustado para <strong>-15 dB</strong>.</p>
-<p class="explicacao">👉 Quando é a vez do <strong>Jogador 1</strong>:</p>
-<ul class="explicacao">
-  <li>O botão <strong>Q</strong> fica invisível (opacidade 0).</li>
-  <li>O botão <strong>P</strong> fica visível (opacidade 100).</li>
-  <li>O texto exibido é <em>"Player 1"</em>.</li>
-</ul>
-<p class="explicacao">👉 Quando é a vez do <strong>Jogador 2</strong>:</p>
-<ul class="explicacao">
-  <li>O botão <strong>P</strong> fica invisível (opacidade 0).</li>
-  <li>O botão <strong>Q</strong> fica visível (opacidade 100).</li>
-  <li>O texto exibido é <em>"Player 2"</em>.</li>
-</ul>
-<p class="explicacao">🎮 Dessa forma, os botões e o texto na interface indicam claramente de quem é a vez, enquanto a barra de vida e a música são sempre mantidas atualizadas.</p>
-<hr>
-<pre>
-
-18 - Sistema: VidaP1 = 0                     | Player1: Definir animação para "morte" (executar do início)
-     Sistema: Ativa uma vez                  | Sistema: Aguardar 2 segundos (escala de tempo)
-                                             | texto: Definir texto para "Player 2 WINS!"
-                                             | Reiniciar: Definir visibilidade para Visível
-
-19 - Sistema: VidaP2 = 0                     | Player2: Definir animação para "morte" (executar do início)
-     Sistema: Ativa uma vez                  | Sistema: Aguardar 2 segundos (escala de tempo)
-                                             | texto: Definir texto para "Player 1 WINS!"
-                                             | Reiniciar: Definir visibilidade para Visível
-
-20 - Reiniciar: Ao clicar                    | Sistema: Redefinir  variáveis globais para padrão
-                                             | Sistema: Reiniciar o layout
-
-  </pre>
-  <p class="explicacao">👉 Quando a <strong>vida de um jogador chega a 0</strong>:</p>
-<ul class="explicacao">
-  <li>O personagem executa a animação de <em>"morte"</em>.</li>
-  <li>O sistema aguarda <strong>2 segundos</strong>.</li>
-  <li>O texto exibe a mensagem de vitória do oponente (<em>"Player 1 WINS!"</em> ou <em>"Player 2 WINS!"</em>).</li>
-  <li>O botão <strong>Reiniciar</strong> fica visível.</li>
-</ul>
-<p class="explicacao">👉 Ao clicar no botão <strong>Reiniciar</strong>, o sistema redefine todas as variáveis globais para os valores padrão e reinicia o layout, começando uma nova partida.</p>
-<p class="explicacao">🏆 Assim, o jogo encerra quando a vida de um dos jogadores chega a 0, mostra o vencedor e permite reiniciar a luta.</p>
-
+  <h2>Código da tela de inicio</h2>
+    <img src="./img/imgjogo7/programação inicio.png" alt="">
   </div>
   <div class="bt">
     <button class="voltar">
