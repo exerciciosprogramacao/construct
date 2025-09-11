@@ -14,7 +14,8 @@
   </div>
   <h1 class="tit">📘 Documentação do Projeto - GeoDash</h1>
   <div class="image">
-<iframe frameborder="0" src="https://itch.io/embed-upload/14738330?color=333333" allowfullscreen="" width="640" height="380"><a href="https://exerciciosprogramacao.itch.io/geodash">Play GeoDash on itch.io</a></iframe>    <ul>
+<iframe frameborder="0" src="https://itch.io/embed-upload/14923014?color=333333" allowfullscreen="" width="640" height="380"><a href="https://exerciciosprogramacao.itch.io/geodash">Play GeoDash on itch.io</a></iframe>
+<ul>
       <li>Clique espaço para pular.</li>
       <li>O jogo tem pulo duplo.</li>
       <li>Use "Esc" para pausar o jogo.</li>
@@ -26,7 +27,7 @@
 
 <div class="bloco">
   <h2>Arquivo do jogo</h2>
-  <a href="">clique aqui para baixar o arquivo do construct3</a>
+  <a href="./arquivos jogos/GeoDash sem programação.c3p">clique aqui para baixar o arquivo do construct3</a>
 </div>
 
 <div class="bloco">
@@ -223,6 +224,8 @@
     <h1>Fase 2</h1>
     <h2>Incluir a programação da fase 1 na fase 2</h2>
     <img src="./img/imgjogo7/incluir pagina 1 na fase 2.png" alt=""> 
+    <p class="explicacao">👉 Assim, a Fase 2 herda todas as funcionalidades e mecânicas da Fase 1, garantindo consistência na jogabilidade e evitando a necessidade de reprogramar tudo do zero.</p>
+    <p class="explicacao">👉 Para incluir a página você deve clicar com o botão direito na tela de programação e ir na opção "Incluir folha de eventos".</p>
     <h2>Sistema</h2>
     <img src="./img/imgjogo7/programação 1 fase 2.png" alt="">
     <ul class="explicacao">
@@ -253,18 +256,17 @@
 <h2>Mecânicas</h2>
     <img src="./img/imgjogo7/programação 2 fase 2.png" alt="" srcset="">
     <ul class="explicacao">
-  <li>O jogador colide com <strong>laser</strong> ou <strong>laser2</strong> → reinicia a variável <strong>pulo</strong> para 0.</li>
-  <li>Quando o jogador está <strong>no chão</strong> → define a variável <strong>pulo</strong> para 1 (permitindo pular).</li>
+  <li>O jogador colide com <strong>laser</strong> ou <strong>laser2</strong> → carrega o save.</li>
+  <li>Quando o jogador <strong>não está no chão</strong> e pressiona C → define a variável <strong>pulo</strong> para 1 (permitindo pular) e adiciona as forças para o player.</li>
   <li>O jogador colide com <strong>speedUp</strong> → aumenta a velocidade do projétil para 600.</li>
   <li>O jogador colide com <strong>speedDown</strong> → diminui a velocidade do projétil para 270.</li>
-  <li>O jogador colide com <strong>plataforma</strong> → define o vetor de movimento da plataforma (X: 1500, Y: -100).</li>
-  <li>O jogador colide com <strong>portalfinal</strong> → aguarda 0.3 segundos e define a física como móvel.</li>
-  <li>Após a sequência de ações, o sistema vai para o <strong>fim</strong> do nível ou fase.</li>
+  <li>O jogador colide com <strong>plataforma</strong> → aguarda 0.3 segundos e define a física como móvel.</li>
+  <li>O jogador colide com <strong>portalfinal</strong> → Vai para tela final.</li>
 </ul>
 
 <p class="explicacao">🎯 Este código controla as mecânicas principais do jogador na Fase 2, incluindo sistema de pulo, colisões com obstáculos (lasers), coleta de power-ups (speedUp/speedDown), interação com plataformas e conclusão do nível através do portal final.</p>
 
-<p class="explicacao">⚡ Os itens <strong>speedUp</strong> e <strong>speedDown</strong> alteram a velocidade de projéteis, adicionando elementos estratégicos à jogabilidade. O sistema de <strong>pulo</strong> é controlado por uma variável que só permite pular quando o personagem está no chão.</p>
+<p class="explicacao">⚡ Os itens <strong>speedUp</strong> e <strong>speedDown</strong> alteram a velocidade de projéteis, adicionando elementos estratégicos à jogabilidade. O sistema de <strong>Dash</strong> é controlado por uma variável que só permite pular quando o personagem não está no chão.</p>
   </div>
   
 
