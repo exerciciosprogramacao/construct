@@ -180,38 +180,6 @@ Habilitado: Ativado (✔)
 </pre>
 <p class="explicacao">👉 Os invasores descem na tela a cada 1 a 3 segundos, indo até a coordenada Y 480 (parte inferior da tela)</p>
 
-    <h2>🔩 Armadilha</h2>
-<pre>
-👉 Comportamentos
-
-⚙ Comportamento: Projétil
-
-Velocidade: 600
-Aceleração: 0
-Gravidade: 0
-Ricochetear em sólidos: Desativado (□)
-Definir ângulo: Ativado (✔)
-Passo: Desativado (□)
-Habilitado: Ativado (✔)
-</pre>
-<p class="explicacao">👉 Vamos começar criando a variável pontos.</p>
-  <pre>
-🌎 Global: número Pontos = 10
-
-6 - armadilha: Ao criar                     | armadilha: Definir ângulo de movimento para 90 graus
-
-7 - armadilha: Ao colidir com chão          | armadilha: Destruir
-
-8 - armadilha: Ao colidir com personagem    | Sistema: Subtrair 2 de 🌎Pontos
-                                            | armadilha: Destruir
-                                            | criando: Gerar fogos na camada 0 (ponto 0, hierarquia: falso)
-                                            | personagem: Piscar: Piscar 0.1s visível 0.1s apagado por 1 segundo
-  </pre>
-  <p class="explicacao">👉 Linha 6 quando a armadilha é criada, ela começa a se mover para baixo ângulo 90°.</p>
-  <p class="explicacao">👉 Linha 7 se encostar no chão, a armadilha é destruída.</p>
-  <p class="explicacao">👉 Linha 8 se atingir o personagem, perde-se 2 pontos, a armadilha some, surgem efeitos visuais e o personagem pisca por 1 segundo.</p>
-  </div>
-
     <div class="bloco">
     <h2>📃 Texto, segunda fase</h2>
     <pre>
