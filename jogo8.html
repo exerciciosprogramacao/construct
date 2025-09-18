@@ -14,7 +14,7 @@
   </div>
   <h1 class="tit">📘 Documentação do Projeto - Endeless Dungeon</h1>
   <div class="image">
-<iframe frameborder="0" src="https://itch.io/embed-upload/14988844?color=333333" allowfullscreen="" width="640" height="380"><a href="https://exerciciosprogramacao.itch.io/endless-dungeon">Play Endless Dungeon on itch.io</a></iframe>
+<iframe frameborder="0" src="https://itch.io/embed-upload/14989931?color=333333" allowfullscreen="" width="640" height="380"><a href="https://exerciciosprogramacao.itch.io/endless-dungeon">Play Endless Dungeon on itch.io</a></iframe>
     <ul>
       <li>Move nas setas do teclado</li>
       <li>Use o mouse para comprar os upgrades</li>
@@ -29,245 +29,28 @@
 
 <div class="bloco">
   <h2>Código da tela de inicio</h2>
-    <img src="./img/imgjogo7/programação inicio.png" alt="">
-    <ul class="explicacao">
-  <li>Ao pressionar a seta <strong>para cima</strong>, a seta do menu vai para <em>Y = 350</em>.</li>
-  <li>Ao pressionar a seta <strong>para baixo</strong>, a seta do menu vai para <em>Y = 450</em>.</li>
-  <li>Se a seta estiver em <em>Y = 350</em> e o jogador pressionar <strong>Enter</strong>:
-    <ul>
-      <li>O objeto <em>ezMode</em> pisca por <strong>1 segundo</strong>.</li>
-      <li>O sistema define a variável <code>mode</code> como <strong>Falso</strong>.</li>
-      <li>O jogo avança para a <strong>Fase 1</strong>.</li>
-    </ul>
-  </li>
-  <li>Se a seta estiver em <em>Y = 450</em> e o jogador pressionar <strong>Enter</strong>:
-    <ul>
-      <li>O objeto <em>hardMode</em> pisca por <strong>1 segundo</strong>.</li>
-      <li>O sistema define a variável <code>mode</code> como <strong>Verdadeiro</strong>.</li>
-      <li>O jogo avança para a <strong>Fase 1</strong>.</li>
-    </ul>
-  </li>
-</ul>
-<p class="explicacao">👉 Assim, o jogador usa as setas para escolher a dificuldade (Fácil ou Difícil) e confirma com <strong>Enter</strong>. Após a escolha, o jogo inicia a Fase 1 com a dificuldade definida.</p>
-<b style="color: red;">TESTE PARA VER SE TUDO ESTÁ FUNCIONANDO</b>
+    <img src="./img/Endless Dungeon/start.png" alt="">
+    <p><b>!!CRIE A VARIÁVEL 😡!!</b></p>
   </div>
 
   <div class="bloco">
     <hr>
     <h1>Fase 1</h1>
     <h2>Variáveis globais</h2>
-    <img src="./img/imgjogo7/variáveis.png" alt="">
+    <img src="./img/Endless Dungeon/variaveis.png" alt="">
     <p><b>!!CRIE AS VARIÁVEIS 😡!!</b></p>
     <h2>Programações iniciais</h2>
-    <img src="./img/imgjogo7/movimentação fase 1.png" alt="">
-    <ul class="explicacao">
-  <li>Se o jogador está no chão:
-    <ul>
-      <li>Define animação inicial e zera a variável <em>pulo</em>.</li>
-      <li>Desativa o efeito de partículas.</li>
-    </ul>
-  </li>
-  <li>Ao pressionar <strong>Barra de espaço</strong>:
-    <ul>
-      <li>Simula o pulo e altera a animação do jogador.</li>
-      <li>Ativa partículas de spray com taxa e ângulo definidos.</li>
-      <li>Reproduz o som de pulo.</li>
-    </ul>
-  </li>
-  <li>Se o jogador tiver <em>velocidade X &lt; 0</em> ou sair do layout:
-    <ul>
-      <li>Executa animação de <em>gameover</em>.</li>
-      <li>Pausa o tempo do jogador.</li>
-      <li>Aguarda 2 segundos e recarrega o jogo salvo.</li>
-    </ul>
-  </li>
-</ul>
-<p class="explicacao">👉 Assim, o jogador pode pular com espaço, ver efeitos visuais/sonoros e, caso morra, o jogo mostra o <strong>gameover</strong> e recarrega o save.</p>
-
-    <h2>Sistema</h2>
-    <img src="./img/imgjogo7/sistema 1 fase 1.png" alt="">
-    <img src="./img/imgjogo7/sistema 2 fase 1.png" alt="" srcset="">
-    <ul class="explicacao">
-  <li>Ao iniciar o layout:
-    <ul>
-      <li>Define cores de objetos e para animações.</li>
-      <li>Salva o jogo no local <em>"mysave"</em>.</li>
-    </ul>
-  </li>
-  <li>A cada tick:
-    <ul>
-      <li>Atualiza partículas na posição do jogador.</li>
-      <li>Mostra na tela os valores de <strong>Pontos</strong> e <strong>Mortes</strong>.</li>
-    </ul>
-  </li>
-  <li>Ao completar carregamento:
-    <ul>
-      <li>Reposiciona contador de mortes no jogador.</li>
-      <li>Adiciona +1 morte e salva no <em>"mysave"</em>.</li>
-    </ul>
-  </li>
-  <li>Definição <strong>pause</strong>:
-    <ul>
-      <li>Pausa o tempo do jogo.</li>
-      <li>Exibe a camada <em>"Pause"</em> e pausa a música.</li>
-    </ul>
-  </li>
-  <li>Senão (quando retoma o jogo):
-    <ul>
-      <li>Continua a música.</li>
-      <li>Oculta a camada <em>"Pause"</em> e retoma o tempo.</li>
-    </ul>
-  </li>
-  <li>Definição <strong>mode</strong>:
-    <ul>
-      <li>Remove o objeto <em>saveFlag</em>.</li>
-    </ul>
-  </li>
-</ul>
-<p class="explicacao">👉 Assim, o sistema gerencia salvar/carregar dados, exibir pontuação e mortes, além de controlar pausa e retomada do jogo.</p>
-
-    <h2>Música</h2>
-    <img src="./img/imgjogo7/musica fase 1.png" alt="" srcset="">
-    <ul class="explicacao">
-  <li>Ao iniciar o layout, se a música não estiver tocando:
-    <ul>
-      <li>Toca a música em loop (tag <em>"music"</em>).</li>
-    </ul>
-  </li>
-  <li>Ao completar o carregamento, se a música não estiver tocando:
-    <ul>
-      <li>Toca a música em loop (tag <em>"music"</em>).</li>
-    </ul>
-  </li>
-</ul>
-<p class="explicacao">👉 Assim, a música de fundo começa a tocar automaticamente no início ou após o carregamento, garantindo que nunca fique em silêncio.</p>
-
-    <h2>Teclado</h2>
-    <img src="./img/imgjogo7/teclado fase 1.png" alt="">
-    <ul class="explicacao">
-  <li>Ao pressionar a tecla <strong>R</strong>:
-    <ul>
-      <li>Reinicia o layout atual.</li>
-    </ul>
-  </li>
-  <li>Ao pressionar a tecla <strong>Esc</strong>:
-    <ul>
-      <li>Alterna entre <em>pausar</em> e <em>retomar</em> o jogo.</li>
-    </ul>
-  </li>
-</ul>
-<p class="explicacao">👉 Assim, o jogador pode reiniciar a fase rapidamente ou usar o <strong>Esc</strong> para pausar/continuar a partida.</p>
-
-    <h2>Obstáculos</h2>
-    <img src="./img/imgjogo7/obstaculos 1 fase 1.png" alt="">
-    <img src="./img/imgjogo7/obstaculos 2 fase 1.png" alt="">
-    <ul class="explicacao">
-  <li>Ao colidir o <strong>player</strong> com obstáculos (espinho, espinhoCai ou bola com correntes):
-    <ul>
-      <li>Ativa animação <em>gameover</em>, desabilita física e projétil, e após 2s carrega <em>mysave</em>.</li>
-    </ul>
-  </li>
-  <li>Ao colidir o <strong>player</strong> com <strong>luzcoleta</strong>:
-    <ul>
-      <li>Executa animação de coleta e adiciona +1 ponto.</li>
-    </ul>
-  </li>
-  <li>Ao terminar a animação <em>coleta</em>:
-    <ul>
-      <li>A <strong>luzcoleta</strong> é destruída.</li>
-    </ul>
-  </li>
-  <li>Quando <strong>espinhoCai</strong> ou <strong>chãoQueCai</strong> estão na tela:
-    <ul>
-      <li>Após 1.2s, ativam Física e se tornam objetos que caem.</li>
-    </ul>
-  </li>
-</ul>
-<p class="explicacao">👉 Assim, o jogador perde ao tocar em armadilhas, ganha pontos ao coletar luzes e encara espinhos e plataformas que desabam.</p>
-
-    <h2>Mecânicas</h2>
-    <img src="./img/imgjogo7/mecanicas 1 fase 1.png" alt="" srcset="">
-    <img src="./img/imgjogo7/mecanicas 2 fase 1.png" alt="">
-    <ul class="explicacao">
-  <li>O jogador colide com a <strong>saveFlag</strong> (bandeira de salvamento).</li>
-  <li>A saveFlag executa a animação de <em>"save"</em> (salvamento).</li>
-  <li>O sistema <strong>salva o jogo</strong> no local "mysave".</li>
-  <li>A saveFlag retorna para a animação de <em>"idle"</em> (repouso).</li>
-</ul>
-
-<ul class="explicacao">
-  <li>O jogador colide com o <strong>portalFinal</strong>.</li>
-  <li>O sistema verifica se a variável <strong>portalFase</strong> é igual a 0.</li>
-  <li>O portalFinal executa a animação de <em>"abrindo"</em> (abertura).</li>
-  <li>Após terminar a animação, o portal muda para <em>"idle"</em> (repouso).</li>
-  <li>O sistema <strong>transiciona para a Fase 2</strong>.</li>
-</ul>
-
-<ul class="explicacao">
-  <li>Quando o jogador sofre uma explosão/morte:</li>
-  <li>O sistema ajusta a <strong>dificuldade de tempo</strong>.</li>
-  <li>O jogador executa a animação <em>"Default"</em>.</li>
-  <li>O jogador é <strong>destruído</strong>.</li>
-  <li>O sistema aguarda <strong>0.6 segundos</strong>.</li>
-  <li>Um <strong>novo jogador é gerado</strong> na camada 1.</li>
-</ul>
-
-<p class="explicacao">👉 Assim, o jogo permite que o jogador <strong>salve seu progresso</strong> ao tocar na bandeira, <strong>avance de fase</strong> ao entrar no portal final (se cumprir as condições) e tenha um <strong>sistema de respawn</strong> após morrer, criando um ciclo de jogabilidade contínuo.</p>
-
-<p class="explicacao">🎮 O controle é feito através de variáveis globais como <strong>portalFase</strong> que determinam quando os portais estão ativos e permitem o progresso do jogador entre as fases do jogo.</p>
-<b>TESTE PARA VER SE TUDO ESTÁ FUNCIONANDO</b>  
-</div>
-
-  <div class="bloco">
-    <hr>
-    <h1>Fase 2</h1>
-    <h2>Incluir a programação da fase 1 na fase 2</h2>
-    <img src="./img/imgjogo7/incluir pagina 1 na fase 2.png" alt=""> 
-    <p class="explicacao">👉 Assim, a Fase 2 herda todas as funcionalidades e mecânicas da Fase 1, garantindo consistência na jogabilidade e evitando a necessidade de reprogramar tudo do zero.</p>
-    <p class="explicacao">👉 Para incluir a página você deve clicar com o botão direito na tela de programação e ir na opção "Incluir folha de eventos".</p>
-    <h2>Sistema</h2>
-    <img src="./img/imgjogo7/programação 1 fase 2.png" alt="">
-    <ul class="explicacao">
-  <li>O sistema define a cor do <strong>mapa</strong> para um tom de amarelo escuro (RGB 50, 50, 0).</li>
-  <li>O objeto <strong>jump</strong> recebe uma cor amarela mais clara (RGB 75, 75, 0).</li>
-  <li>A <strong>saveFlag</strong> (bandeira de salvamento) é colorida com azul (RGB 0, 0, 100).</li>
-  <li>Os <strong>pontos</strong> são definidos com um tom amarelo-esverdeado (RGB 90, 90, 10).</li>
-  <li>O objeto <strong>luzcol</strong> recebe uma cor verde (RGB 0, 120, 0).</li>
-  <li>O <strong>chão</strong> é colorido com o mesmo tom de amarelo do jump (RGB 75, 75, 0).</li>
-  <li>As <strong>partículas</strong> também usam a mesma cor amarela (RGB 75, 75, 0).</li>
-  <li>Ao interagir com o <strong>portal</strong>, a variável <strong>portalFase</strong> é incrementada em 1.</li>
-</ul>
-
-<p class="explicacao">🎨 Este código configura o esquema de cores visual do jogo, atribuindo cores específicas a diferentes elementos como mapa, obstáculos, itens coletáveis e mecanismos de interação.</p>
-
-<p class="explicacao">🔄 A variável <strong>portalFase</strong> é incrementada quando o jogador interage com o portal, possivelmente controlando o progresso entre fases ou o estado de abertura do portal.</p>
-<ul class="explicacao">
-  <li>O sistema executa ações <strong>a cada 4 segundos</strong> e também <strong>ao iniciar o layout</strong>.</li>
-  <li>São gerados dois objetos do tipo <strong>laser</strong> e <strong>laser2</strong> na camada 1.</li>
-  <li>Os lasers são criados no ponto de imagem 1, sem criar hierarquia.</li>
-  <li>O sistema aguarda <strong>2 segundos</strong> (usando escala de tempo real).</li>
-  <li>Após esse tempo, os objetos laser são <strong>destruídos</strong>.</li>
-</ul>
-
-<p class="explicacao">🔁 Este código cria um ciclo de geração e destruição de lasers a cada 4 segundos, provavelmente representando obstáculos periódicos ou armadilhas no jogo.</p>
-
-<p class="explicacao">⚡ Os lasers são temporários, permanecendo ativos por apenas 2 segundos antes de serem removidos, criando um padrão de desafio intermitente para o jogador.</p>    
-<h2>Mecânicas</h2>
-    <img src="./img/imgjogo7/programação 2 fase 2.png" alt="" srcset="">
-    <ul class="explicacao">
-  <li>O jogador colide com <strong>laser</strong> ou <strong>laser2</strong> → carrega o save.</li>
-  <li>Quando o jogador <strong>não está no chão</strong> e pressiona C → define a variável <strong>pulo</strong> para 1 (permitindo pular) e adiciona as forças para o player.</li>
-  <li>O jogador colide com <strong>speedUp</strong> → aumenta a velocidade do projétil para 600.</li>
-  <li>O jogador colide com <strong>speedDown</strong> → diminui a velocidade do projétil para 270.</li>
-  <li>O jogador colide com <strong>plataforma</strong> → aguarda 0.3 segundos e define a física como móvel.</li>
-  <li>O jogador colide com <strong>portalfinal</strong> → Vai para tela final.</li>
-</ul>
-
-<p class="explicacao">🎯 Este código controla as mecânicas principais do jogador na Fase 2, incluindo sistema de pulo, colisões com obstáculos (lasers), coleta de power-ups (speedUp/speedDown), interação com plataformas e conclusão do nível através do portal final.</p>
-
-<p class="explicacao">⚡ Os itens <strong>speedUp</strong> e <strong>speedDown</strong> alteram a velocidade de projéteis, adicionando elementos estratégicos à jogabilidade. O sistema de <strong>Dash</strong> é controlado por uma variável que só permite pular quando o personagem não está no chão.</p>
-<b style="color: red;">Agora só resta testar e competir com os colegas para ver quem consegue terminar o jogo com menos mortes.</b>  
-</div>
+    <img src="./img/Endless Dungeon/1 - ao iniciar o layout.png" alt="">    
+    <h2>Tiro automático e Spawn de inimigos</h2>
+    <img src="./img/Endless Dungeon/2 - tiro e spawn.png" alt="">
+    <h2>Moivmento, dano e mecânica de orbes</h2>
+    <img src="./img/Endless Dungeon/3 - campo de visão, tiro dano.png" alt="">
+    <h2>Texto, moeda e upgrade 1</h2>
+    <img src="./img/Endless Dungeon/4.png" alt="">
+    <h2>Upgrade 2 e 3</h2>
+    <img src="./img/Endless Dungeon/5.png" alt="">
+    <h2>Aumento na dificuldade, tiro 2 e game over</h2>
+    <img src="./img/Endless Dungeon/6.png" alt="">
   
 
   <div class="bt">
