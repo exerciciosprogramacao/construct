@@ -31,6 +31,26 @@
   <h2>Código da tela de inicio</h2>
     <img src="./img/Endless Dungeon/start.png" alt="">
     <p><b>!!CRIE A VARIÁVEL 😡!!</b></p>
+
+    <ul class="explicacao">
+  <li>Ao clicar no botão <strong>Start</strong>:
+    <ul>
+      <li>Faz efeito de piscar, espera 1.2s, troca para <em>fase1</em> e guarda o nome digitado.</li>
+    </ul>
+  </li>
+  <li>Ao iniciar layout:
+    <ul>
+      <li>Toca a música <em>awesomeness</em> e dá foco ao campo de nome.</li>
+    </ul>
+  </li>
+  <li>Quando o campo de nome está focado:
+    <ul>
+      <li>Adiciona caracteres ao nome do jogador.</li>
+    </ul>
+  </li>
+</ul>
+<p class="explicacao">👉 Assim, o jogador insere o nome, a música inicia e o jogo começa ao clicar em <strong>Start</strong>.</p>
+
   </div>
 
   <div class="bloco">
@@ -40,18 +60,122 @@
     <img src="./img/Endless Dungeon/variaveis.png" alt="">
     <p><b>!!CRIE AS VARIÁVEIS 😡!!</b></p>
     <h2>Programações iniciais</h2>
-    <img src="./img/Endless Dungeon/1 - ao iniciar o layout.png" alt="">    
+    <img src="./img/Endless Dungeon/1 - ao iniciar o layout.png" alt="">
+    <ul class="explicacao">
+  <li>Ao iniciar o layout:
+    <ul>
+      <li>Toca a música <em>Mega Man 2 - Dr. Wily Stage 1</em>.</li>
+      <li>Os botões <strong>Bpoder1, Bpoder2 e Bpoder3</strong> têm suas animações paradas.</li>
+      <li>O objeto <strong>CoraçõesDeVida</strong> mostra o quadro da animação de vida e para a animação.</li>
+      <li>Os textos são definidos com os valores de moedas (<em>valorMoeda</em> e <em>valorMoeda2</em>).</li>
+      <li>O botão <strong>comprarPoder2</strong> é ajustado para o quadro 0 e tem sua animação parada.</li>
+    </ul>
+  </li>
+</ul>
+<p class="explicacao">👉 Assim, ao começar a fase, a música inicia, os elementos de interface são configurados e os valores do jogador são exibidos corretamente.</p>
+   
     <h2>Tiro automático e Spawn de inimigos</h2>
     <img src="./img/Endless Dungeon/2 - tiro e spawn.png" alt="">
-    <h2>Moivmento, dano e mecânica de orbes</h2>
+<ul class="explicacao">
+  <li>A cada <strong>0.6s</strong>:
+    <ul>
+      <li>Se o jogador ver o goblin → gera <strong>poder1</strong>.</li>
+    </ul>
+  </li>
+  <li>A cada tempo aleatório:
+    <ul>
+      <li><strong>Sprite2</strong>: gera goblins no topo.</li>
+      <li><strong>Sprite3</strong>: gera goblins nas bordas laterais.</li>
+      <li><strong>Sprite4</strong>: gera goblins na esquerda.</li>
+      <li><strong>Sprite5</strong>: gera goblins na direita (não invertidos).</li>
+    </ul>
+  </li>
+</ul>
+<p class="explicacao">👉 O sistema cria goblins em diferentes posições aleatórias e o jogador pode atacar usando <strong>poder1</strong>.</p>
+
+    <h2>Movimento, dano e mecânica de orbes</h2>
     <img src="./img/Endless Dungeon/3 - campo de visão, tiro dano.png" alt="">
+<ul class="explicacao">
+  <li><strong>goblin1</strong> vê o <strong>player</strong> → move até ele.</li>
+  <li><strong>poder1</strong> vê o <strong>goblin1</strong> → move até ele.</li>
+  <li>Quando <strong>poder1</strong> colide com goblin1:
+    <ul>
+      <li>Destrói goblin e poder.</li>
+      <li>Cria uma <strong>moeda</strong>.</li>
+    </ul>
+  </li>
+  <li><strong>poder2</strong> segue a posição do player.</li>
+  <li><strong>poder2</strong> colide com goblin1 → destrói o goblin.</li>
+  <li><strong>player</strong> colide com goblin1:
+    <ul>
+      <li>Perde 1 de <strong>Vida</strong>.</li>
+      <li>Goblin é destruído.</li>
+      <li>Atualiza corações de vida.</li>
+      <li>Player pisca e treme a tela.</li>
+    </ul>
+  </li>
+</ul>
+<p class="explicacao">👉 Os goblins perseguem o player, e os poderes servem para derrotá-los e gerar moedas. O contato direto reduz a vida do jogador.</p>
+
     <h2>Texto, moeda e upgrade 1</h2>
     <img src="./img/Endless Dungeon/4.png" alt="">
+<ul class="explicacao">
+  <li><strong>HUD</strong> mostra moedas e tempo em tempo real.</li>
+  <li><strong>player</strong> pega moeda:
+    <ul>
+      <li>Moeda é destruída.</li>
+      <li>+1 moeda no contador.</li>
+    </ul>
+  </li>
+  <li>A cada 1 segundo → +1 no <strong>Tempo</strong>.</li>
+  <li><strong>Botão Bpoder1</strong>:
+    <ul>
+      <li>Se moedas ≥ 5×valorMoeda → restaura vida para 5.</li>
+      <li>Subtrai moedas equivalentes.</li>
+      <li>Atualiza corações e valor da moeda.</li>
+    </ul>
+  </li>
+</ul>
+<p class="explicacao">👉 As moedas coletadas aumentam o contador e podem ser usadas para restaurar a vida através do botão especial.</p>
+
     <h2>Upgrade 2 e 3</h2>
     <img src="./img/Endless Dungeon/5.png" alt="">
+<ul class="explicacao">
+  <li><strong>Bpoder2</strong> (custo 5×valorMoeda2):
+    <ul>
+      <li>Se valorMoeda2 = 1 → compra desbloqueia <strong>poder2</strong>, visível e girando.</li>
+      <li>Se valorMoeda2 = 10 → aumenta ainda mais o poder.</li>
+    </ul>
+  </li>
+  <li><strong>Bpoder3</strong> (custo 50 moedas):
+    <ul>
+      <li>Ativa <strong>tiro2</strong>, um novo tipo de ataque.</li>
+    </ul>
+  </li>
+</ul>
+<p class="explicacao">👉 Jogador usa moedas para comprar upgrades e liberar novos ataques.</p>
+
     <h2>Aumento na dificuldade, tiro 2 e game over</h2>
     <img src="./img/Endless Dungeon/6.png" alt="">
-  
+
+<ul class="explicacao">
+  <li><strong>Spawn:</strong> A cada 15s aumenta <em>valorspawn</em> (mais inimigos surgem).</li>
+  <li><strong>Tiro especial:</strong> Se <em>tiro2 = 1</em>, o player dispara <strong>poder1</strong> automaticamente a cada 0.6s contra goblins.</li>
+  <li><strong>Game Over:</strong> Se <em>Vida = 0</em>, vai para a cena <strong>gameover</strong>.</li>
+</ul>
+<p class="explicacao">👉 Sistema de dificuldade progressiva, ataque automático e fim de jogo.</p>
+
+<h2>Game Over</h2>
+<img src="./img/Endless Dungeon/game over.png" alt="">
+<ul class="explicacao">
+  <li><strong>Reinício:</strong> A cada 1.5s pisca um efeito. Se apertar <kbd>Espaço</kbd>, reinicia na fase1 e reseta variáveis.</li>
+  <li><strong>Inimigo extra:</strong> A cada 1.6s, <em>Sprite7</em> (caveira) se move aleatoriamente e ricocheteia como projétil.</li>
+  <li><strong>Tempo:</strong> Armazena e carrega o valor salvo no início do layout.</li>
+  <li><strong>High Score:</strong> Se o <em>Tempo</em> atual for maior que o recorde salvo, define o novo HighScore e mostra junto do nome do jogador.</li>
+</ul>
+<p class="explicacao">👉 Sistema de reinício rápido, inimigo bônus e recorde salvo no jogo.</p>
+
+  </div>
 
   <div class="bt">
     <button class="voltar">
