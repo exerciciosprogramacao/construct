@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercícios</title>
+  <link rel="stylesheet" href="./jogo9.css">
+  <link rel="icon" type="image/png" href="./img/logocons.png">
+</head>
+<body>
+  <div class="btt">
+    <button class="avancar">💰 15</button>
+    <button class="avancar" onclick="toggleDarkMode()">👓</button>
+  </div>
+  <h1 class="tit">📘 Documentação do Projeto - Jump Prince</h1>
+  <div class="image">
+<iframe frameborder="0" src="https://itch.io/embed-upload/15033800?color=333333" allowfullscreen="" width="640" height="380"><a href="https://exerciciosprogramacao.itch.io/jump-prince">Play Jump Prince on itch.io</a></iframe>
+    <ul>
+      <li>Move nas setas do teclado</li>
+      <li>Use espaço para pular</li>
+      <li>Quando mais segurar mais forte é o pulo</li>
+    </ul>
+  </div>
+<br>
+
+<div class="bloco">
+  <h2>Arquivo do jogo</h2>
+  <a href="./arquivos jogos/jump prince - sem programação.c3p">clique aqui para baixar o arquivo do construct3</a>
+</div>
+
+
+  <div class="bloco">
+    <hr>
+    <h1>Jogo</h1>
+    <h2>Variáveis globais</h2>
+    <img src="./img/img jogo 9 - Jump prince/variaveis.png" alt="">
+    <p><b>!!CRIE AS VARIÁVEIS 😡!!</b></p>
+
+    <h2>Sistema</h2>
+    <img src="./img/img jogo 9 - Jump prince/7 - sistema.png" alt="">
+<ul class="explicacao">
+  <li><strong>Som inicial:</strong> Toca a música "Grind" ao iniciar o layout.</li>
+  <li><strong>Força do pulo:</strong> A cada tick, ajusta <code>forcaPulo</code> dentro do limite 0–700.</li>
+  <li><strong>Volume:</strong> Define o volume da música em -10 dB.</li>
+  <li><strong>Reset:</strong> Tecla R reinicia o layout.</li>
+</ul>
+<p class="explicacao">👉 Controla a música e o sistema de força do pulo.</p> 
+
+<h1>Player</h1>
+    <h2>Animações Básicas</h2>
+    <img src="./img/img jogo 9 - Jump prince/1 - player animações 1.png" alt="">
+<ul class="explicacao">
+  <li><strong>Walk:</strong> Se o player está no chão e em movimento → animação "walk".</li>
+  <li><strong>Idle:</strong> Se parado no chão e sem carregar pulo → animação "idle".</li>
+</ul>
+<p class="explicacao">👉 Controla as animações básicas do personagem (andar e parado).</p>
+
+    <h2>Animações avançadas de carga do pulo</h2>
+    <img src="./img/img jogo 9 - Jump prince/2 - player animações 2.png" alt="">
+<ul class="explicacao">
+  <li><strong>Charge:</strong> Se o player está no chão e carregando pulo, animação muda para <code>charge</code>.</li>
+  <li><strong>Força baixa (&lt;233):</strong> Mostra quadro 0 da animação.</li>
+  <li><strong>Força média (233–466):</strong> Mostra quadro 1.</li>
+  <li><strong>Força alta (466–699):</strong> Mostra quadro 2.</li>
+  <li><strong>Força máxima (700):</strong> Mostra quadro 3.</li>
+</ul>
+<p class="explicacao">👉 Controla os quadros da animação conforme a carga do pulo.</p>
+
+    <h2>Animações de pular e sons de passos</h2>
+    <img src="./img/img jogo 9 - Jump prince/3 - player animações 3.png" alt="">
+<ul class="explicacao">
+  <li><strong>Walk:</strong> Enquanto a animação "walk" roda, tocam sons de passos.</li>
+  <li><strong>Quadro 0:</strong> Toca <code>GRASS - Walk short 4</code>.</li>
+  <li><strong>Quadro 1:</strong> Toca <code>GRASS - Walk short 4</code> novamente.</li>
+  <li><strong>Pulando:</strong> Ao pular, a animação muda para <code>jump</code>.</li>
+</ul>
+<p class="explicacao">👉 Controla os sons de passos e a transição de animação para o pulo.</p>
+
+    <h2>Controle de movimentos horizontais</h2>
+    <img src="./img/img jogo 9 - Jump prince/4 - player controles 1.png" alt="">
+<<ul class="explicacao">
+  <li><strong>Seta Esquerda:</strong> Move o jogador para a esquerda, espelha o sprite e simula movimento da plataforma.</li>
+  <li><strong>Seta Direita:</strong> Move o jogador para a direita, mantém o sprite não espelhado e simula movimento da plataforma.</li>
+  <li><strong>Barra de Espaço:</strong> Ao pressionar no chão, ativa o carregamento do pulo e zera a força inicial.</li>
+</ul>
+<p class="explicacao">👉 Controla o movimento lateral do player e o início do carregamento do pulo.</p>
+
+    <h2>Controle do pulo</h2>
+    <img src="./img/img jogo 9 - Jump prince/5 - player controles 2.png" alt="">
+<ul class="explicacao">
+  <li><strong>Barra de Espaço Pressionada:</strong> Enquanto o jogador segura a tecla, a variável <code>forcaPulo</code> vai aumentando em passos de 10, representando o "carregamento" da força do pulo.</li>
+  <li><strong>Indicador de Carregamento:</strong> Durante esse tempo, a flag <code>CarregandoPulo</code> fica ativada, permitindo mostrar a animação de "charge" no player.</li>
+  <li><strong>Barra de Espaço Solta:</strong> Ao soltar a tecla, o jogo calcula a velocidade horizontal (<code>velocidadeX</code>) com base na direção em que o player está virado e na força acumulada. Em seguida, aplica a força vertical (<code>-forcaPulo</code>) no player, fazendo-o saltar em arco.</li>
+  <li><strong>Som de Pulo:</strong> Um efeito sonoro de "Jump" é tocado para dar feedback ao jogador.</li>
+  <li><strong>Durante o Pulo:</strong> O player ignora comandos de movimento normais (esquerda/direita) e passa a seguir apenas a velocidade calculada no momento do salto.</li>
+</ul>
+<p class="explicacao">👉 Esse sistema permite um pulo no estilo <em>Jump King</em>, em que a altura e distância do salto dependem de quanto tempo a tecla foi segurada.</p>
+
+<h2>Controles finais</h2>
+<img src="./img/img jogo 9 - Jump prince/6 - player controles 3.png" alt="">
+<ul class="explicacao">
+  <li><strong>Quando o Player está no chão:</strong> O jogo faz o player voltar a responder aos comandos de movimento. Além disso, a velocidade horizontal (<code>velocidadeX</code>) é zerada para que ele não deslize após o pulo.</li>
+  <li><strong>Quando o Player colide com um bloco (Mosaico):</strong> A velocidade horizontal também é zerada, interrompendo o movimento.</li>
+  <li><strong>Efeito Sonoro:</strong> Um som de impacto (<em>Hit damage</em>) é tocado para dar feedback ao jogador da colisão.</li>
+</ul>
+<p class="explicacao">👉 Esse sistema garante que, ao encostar no chão ou em obstáculos, o player perca a velocidade horizontal e o jogo dê uma resposta sonora clara.</p>
+
+  </div>
+
+  <div class="bt">
+    <button class="voltar">
+      <a href="./jogo8.html">Voltar</a>
+    </button>
+    <!-- <button class="avancar">
+      <a href="./jogo10.html">Avançar</a>
+    </button> -->
+  </div>
+  <script src="./script.js"></script>
+</body>
+</html>
