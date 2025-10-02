@@ -86,11 +86,23 @@ runtime.goToLayout(proximoLayout);
   
   <h1>Fase 2</h1>
 <img src="./img/img jogo 10 - Dark Level/fase 2.png" alt="">
+<h3>Eventos da Plataforma Móvel</h3>
+<p class="explicacao">👉 <strong>Evento 1:</strong> Quando o layout inicia, a <em>plataformaMove</em> é configurada como <strong>Sólida</strong>, permitindo que o jogador interaja com ela.</p>
+<p class="explicacao">👉 <strong>Evento 2:</strong> Se a <em>plataformaMove</em> estiver dentro do <em>Campo de Visão</em> do personagem <strong>CarinhaAzul</strong> e ainda não tiver se movido, ela inicia um movimento para a posição <strong>Y = 312</strong>. Ao mesmo tempo, a variável <em>Moveu</em> é definida como <strong>Verdadeiro</strong>, impedindo que esse processo se repita.</p>
+<p class="explicacao">👉 <strong>Evento 3:</strong> Quando a <em>plataformaMove</em> chega à posição <strong>Y = 312</strong>, ela é programada para se mover horizontalmente até <strong>X = 432</strong>.</p>
+<p class="explicacao">👉 <strong>Evento 4:</strong> Quando a <em>plataformaMove</em> chega à posição <strong>X = 432</strong>, ela continua o movimento para baixo até a coordenada <strong>Y = 408</strong>, completando o percurso estabelecido.</p>
 
 
   <h1>Fase 3</h1>
 <img src="./img/img jogo 10 - Dark Level/fase 3.png" alt="">
+<h3>Eventos da Porta e Plataforma</h3>
+<p class="explicacao">👉 <strong>Evento 1:</strong> Ao iniciar o layout, a <em>Porta</em> é configurada para a animação <strong>Trancado</strong>. A <em>plataformaMove</em> é marcada como <strong>Sólida</strong> e a variável <em>Moveu</em> é definida como <strong>Falso</strong>. Já a <em>plataformaSome</em> também é ativada como <strong>Sólida</strong>.</p>
+<p class="explicacao">👉 <strong>Evento 2:</strong> Quando o personagem <em>CarinhaAzul</em> colide com a <em>Chave</em>, a <em>Porta</em> muda para a animação <strong>Aberto</strong> e a <em>Chave</em> é destruída.</p>
+<p class="explicacao">👉 <strong>Evento 3:</strong> Se a <em>plataformaSome</em> estiver dentro do <em>Campo de Visão</em> do <em>CarinhaAzul</em> e a <em>Porta</em> estiver com a animação <strong>Aberto</strong>, a plataforma começa a interagir de acordo com as condições seguintes.</p>
+<p class="explicacao">👉 <strong>Evento 4:</strong> A cada <em>tick</em>, se a <em>plataformaSome</em> tiver opacidade diferente de 0, ela perde 10 pontos de opacidade gradualmente e deixa de ser <strong>Sólida</strong>, desaparecendo do cenário.</p>
 
+<h2>Agora é com você 🫵</h2>
+<p class="explicacao">👉 Use esse modelo para criar suas próprias fases, adicionando novos desafios e mecânicas ao jogo. Experimente diferentes combinações de plataformas, inimigos e obstáculos para tornar o jogo mais interessante.</p>
 
   </div>
 
