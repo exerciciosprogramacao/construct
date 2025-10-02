@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercícios</title>
+  <link rel="stylesheet" href="./jogo10.css">
+  <link rel="icon" type="image/png" href="./img/logocons.png">
+</head>
+<body>
+  <div class="btt">
+    <button class="avancar">💰 15</button>
+    <button class="avancar" onclick="toggleDarkMode()">👓</button>
+  </div>
+  <h1 class="tit">📘 Documentação do Projeto - Dark Level</h1>
+  <div class="image">
+    <iframe frameborder="0" src="https://itch.io/embed-upload/15111508?color=333333" allowfullscreen="" width="640" height="380"><a href="https://exerciciosprogramacao.itch.io/dark-level">Play Dark Level on itch.io</a></iframe>
+    <ul>
+      <li>Move nas setas do teclado</li>
+      <li>Seta para cima pula</li>
+    </ul>
+  </div>
+<br>
+
+<div class="bloco">
+  <h2>Arquivo do jogo</h2>
+  <a href="./arquivos jogos/Dark Level sem programação.c3p">clique aqui para baixar o arquivo do construct3</a>
+</div>
+
+
+  <div class="bloco">
+    <hr>
+    <h1>Jogo</h1>
+    <h2>Organização das folhas de eventos e fases do jogo</h2>
+    <img src="./img/img jogo 10 - Dark Level/organização das folhas de evento.png" alt="">
+    <p class="explicacao">👉 A folha de eventos principal é "Eventos Gerais", que gerencia as mecânicas centrais do jogo. As outras folhas de eventos são específicas para cada fase, como "Fase 1", "Fase 2" e "Fase 3".</p>
+    <p class="explicacao">👉 Cada fase tem seus próprios eventos e lógica, permitindo uma organização clara e modular do código do jogo.</p>
+    <p class="explicacao">👉 LEMBRE DE SEMPRE VERIFICAR QUAL FOLHA DE EVENTOS ESTÁ SELECIONADA EM CADA LAYOUT (Fase)</p>
+    <p><b>!!CRIE AS VARIÁVEIS 😡!!</b></p>
+    <h2>Eventos gerais</h2>
+    <img src="./img/img jogo 10 - Dark Level/1 geral.png" alt="">
+    <h3>Eventos de Animação</h3>
+<p class="explicacao">👉 <strong>Verificação de morte:</strong> Se a animação <em>"Death"</em> não estiver em execução, o sistema continua avaliando os outros estados.</p>
+<p class="explicacao">👉 <strong>Movimento:</strong> Quando o player está se movendo, a animação muda para <em>"Walk"</em> (andar).</p>
+<p class="explicacao">👉 <strong>Parado:</strong> Caso contrário, se não estiver andando, a animação é definida como <em>"Idle"</em> (parado).</p>
+<p class="explicacao">👉 <strong>No ar:</strong> Se o player não estiver no chão, a animação muda para <em>"Jump"</em> (pulo).</p>
+<p class="explicacao">👉 <strong>Colisão com fogo:</strong> Ao encostar no fogo, o player executa a animação <em>"Death"</em>, ignora comandos da plataforma, aguarda 1 segundo e o layout é reiniciado.</p>
+
+    <img src="./img/img jogo 10 - Dark Level/2 geral.png" alt="">
+    <h3>Eventos de Som e Música</h3>
+<p class="explicacao">👉 <strong>Pulo:</strong> Ao pressionar ↑ e estando no chão, toca o som <em>"Jump 1"</em>.</p>
+<p class="explicacao">👉 <strong>Pouso:</strong> Quando o player aterrissa, toca o som <em>"Hit damage 1"</em>.</p>
+<p class="explicacao">👉 <strong>Início do layout:</strong> Se <em>musica</em> for falso, define como verdadeiro e toca a música <em>"Forgotten Station"</em> em loop.</p>
+
+    <img src="./img/img jogo 10 - Dark Level/3.1 geral.png" alt="">
+    <h3>Eventos de Definições</h3>
+<p class="explicacao">👉 <strong>Escalas:</strong> Player definido com escala <em>1.6</em> e Porta com escala <em>2</em>.</p>
+<p class="explicacao">👉 <strong>Player:</strong> Força do pulo ajustada para <em>360</em> e velocidade máxima da plataforma para <em>260</em>.</p>
+<p class="explicacao">👉 <strong>Inimigos:</strong> Campo de visão ajustado para <em>50</em>.</p>
+<p class="explicacao">👉 <strong>Movimentação dos inimigos:</strong> Velocidade máxima configurada em <em>2000</em> e desaceleração em <em>6000</em>.</p>
+<p class="explicacao">👉 <strong>Campo de visão:</strong> Adicionado o obstáculo <em>CarinhaAzul</em>.</p>
+<p class="explicacao">👉 <strong>Organização:</strong> Player movido para o topo da camada.</p>
+<p class="explicacao">👉 <strong>Ao destruir Player:</strong> Reinicia o layout.</p>
+
+    <img src="./img/img jogo 10 - Dark Level/3.2 geral.png" alt=""><h3>Eventos de Transição e Espelhamento</h3>
+<p class="explicacao">👉 <strong>Porta:</strong> Quando o Player colide com a Porta (na animação "Aberto"), a variável <em>Fase</em> é aumentada em +1.</p>
+<p class="explicacao">👉 <strong>JavaScript:</strong> Um código é executado para controlar a troca de fases. Ele obtém o valor da variável global <em>Fase</em>, monta dinamicamente o nome do próximo layout e, em seguida, troca para esse layout:</p>
+
+<pre style="font-size: 1.1em; background:#1e1e1e; color:#dcdcdc; padding:10px; border-radius:8px;">
+<code>
+const faseAtual = runtime.globalVars.Fase;
+const proximoLayout = "Fase " + faseAtual;
+runtime.goToLayout(proximoLayout);
+</code>
+</pre>
+
+<p class="explicacao">👉 <strong>Espelhamento:</strong> Se a tecla ← é pressionada, o Player é definido como espelhado. Se a tecla → é pressionada, ele volta para não espelhado.</p>
+
+
+  <h1>Fase 1</h1>
+    <img src="./img/img jogo 10 - Dark Level/fase 1.png" alt="">
+    <h3>Eventos da Plataforma que Desaparece</h3>
+<p class="explicacao">👉 <strong>Evento 1:</strong> Quando o layout inicia, a <em>plataformaSome</em> é configurada com <strong>Sólido desabilitado</strong>, impedindo que o jogador interaja com ela antes do funcionamento previsto.</p>
+<p class="explicacao">👉 <strong>Evento 2:</strong> Se a <em>plataformaSome</em> estiver dentro do <em>Campo de Visão</em> do personagem <strong>CarinhaAzul</strong>, o sistema detecta e ativa a lógica de desaparecimento.</p>
+<p class="explicacao">👉 <strong>Evento 3:</strong> A cada tick, enquanto a opacidade da <em>plataformaSome</em> for diferente de zero, o sistema reduz gradualmente a opacidade em pequenos intervalos, aguardando <strong>0.1 segundos</strong> entre cada redução, até que a plataforma desapareça completamente.</p>
+  
+  <h1>Fase 2</h1>
+<img src="./img/img jogo 10 - Dark Level/fase 2.png" alt="">
+
+
+  <h1>Fase 3</h1>
+<img src="./img/img jogo 10 - Dark Level/fase 3.png" alt="">
+
+
+  </div>
+
+  <div class="bt">
+    <button class="voltar">
+      <a href="./jogo9.html">Voltar</a>
+    </button>
+    <!-- <button class="avancar">
+      <a href="./jogo10.html">Avançar</a>
+    </button> -->
+  </div>
+  <script src="./script.js"></script>
+</body>
+</html>
