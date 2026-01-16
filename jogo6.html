@@ -44,11 +44,11 @@
 <div class="bloco">
   <h2>Código do jogo</h2>
   <pre>
-1 - Sistema: Ao iniciar layout          | Player1: Definir escala para 1.3  
-                                        | Player2: Definir escala para 1.3  
-                                        | Player2: Definir Espelhado  
-                                        | Sistema: Definir VezDoJogador para escolher(1,2)  
-                                        | Audio: Tocar 2 - Heavy Combat - Elven Battle (loop) com repetição, volume 10 dB (pan estéreo 0, tag "musica") 
+1 - Sistema: Ao iniciar layout               | Player1: Definir escala para 1.3  
+                                             | Player2: Definir escala para 1.3  
+                                             | Player2: Definir Espelhado  
+                                             | Sistema: Definir VezDoJogador para escolher(1,2)  
+                                             | Audio: Tocar 2 - Heavy Combat - Elven Battle (loop) com repetição, volume 10 dB (pan estéreo 0, tag "musica") 
   </pre>
   <p class="explicacao">👉 Quando o layout inicia, o tamanho (escala) do Player1 e do Player2 é definido para <strong>1.3</strong>.</p>
 <p class="explicacao">👉 O Player2 é configurado como <strong>espelhado</strong>, para ficar virado para o lado oposto do Player1.</p>
@@ -57,15 +57,15 @@
 <hr>
 <pre>
 2 - Teclado: Ao pressionar Barra de espaço   | Sistema: Aguardar 0.12 segundos (usar escala de tempo: Verdadeiro)  
-    Sistema: [x] Defição ataque                  |
+    Sistema: Definir ataque                  |
     Sistema: VidaP1 ≠ 0                      |
     Sistema: VidaP2 ≠ 0                      |
 
-	3 - Sistema: VezDoJogador = 1         | Sistema: Chamar jogadaP1  
-                                              | Sistema: Definir ataque para Verdadeiro
+  3 - Sistema: VezDoJogador = 1              | Sistema: Chamar jogadaP1  
+                                             | Sistema: Definir ataque para Verdadeiro
 
-	4 - Sistema: VezDoJogador = 2         | Sistema: Chamar jogadaP2  
-                                              | Sistema: Definir ataque para Verdadeiro
+  4 - Sistema: VezDoJogador = 2              | Sistema: Chamar jogadaP2  
+                                             | Sistema: Definir ataque para Verdadeiro
 </pre>
 <p class="explicacao">👉 Quando o jogador pressiona a <strong>Barra de Espaço</strong>, o sistema aguarda <strong>0.12 segundos</strong> antes de executar as próximas ações.</p>
 <p class="explicacao">👉 Após a espera, o sistema ativa a variável <strong>ataque</strong>.</p>
@@ -74,17 +74,16 @@
 <p class="explicacao">👉 Se for a vez do <strong>Jogador 2</strong>, o sistema chama a função <strong>jogadaP2</strong> e também define o ataque como <strong>Verdadeiro</strong>.</p>
 <hr>
 <pre> 
-  
-5 - Teclado: Ao pressionar Q                    | Player1: Definir animação para "block" (executar do início)  
-    Player1: A animação "idle" está em execução | Sistema: Definir p1Block para Verdadeiro  
-    Sistema: VezDoJogador = 2                   | Sistema: Aguardar 1 segundo (usar escala de tempo)  
-    Sistema: [X] Definição p1Block              | Sistema: Definir p1Block para Falso  
+5 - Teclado: Ao pressionar Q                 | Player1: Definir animação para "block" (executar do início)  
+    Player1: A animação "idle" está em execuç| Sistema: Definir p1Block para Verdadeiro  
+    Sistema: VezDoJogador = 2                | Sistema: Aguardar 1 segundo (usar escala de tempo)  
+    Sistema: [X] Definição p1Block           | Sistema: Definir p1Block para Falso  
     Sistema: VidaP1 ≠ 0                         
 
-6 - Teclado: Ao pressionar P                    | Player2: Definir animação para "block" (executar do início)  
-    Player2: A animação "idle" está em execução | Sistema: Definir p2Block para Verdadeiro  
-    Sistema: VezDoJogador = 1                   | Sistema: Aguardar 1 segundo (usar escala de tempo)  
-    Sistema: [X] Definição p2Block              | Sistema: Definir p2Block para Falso  
+6 - Teclado: Ao pressionar P                 | Player2: Definir animação para "block" (executar do início)  
+    Player2: A animação "idle" está em execuç| Sistema: Definir p2Block para Verdadeiro  
+    Sistema: VezDoJogador = 1                | Sistema: Aguardar 1 segundo (usar escala de tempo)  
+    Sistema: [X] Definição p2Block           | Sistema: Definir p2Block para Falso  
     Sistema: VidaP2 ≠ 0
 </pre>
 <p class="explicacao">👉 Quando o jogador pressiona <strong>Q</strong> (Player1) ou <strong>P</strong> (Player2), o personagem executa a animação <em>"block"</em>, mas apenas se estiver na animação <em>"idle"</em> (parado).</p>
@@ -94,44 +93,44 @@
 <p class="explicacao">🛡️ Dica: O bloqueio dura apenas 1 segundo e só pode ser ativado quando o personagem está parado.</p>
 <hr>
 <pre>
-7 - Player1: Quando animação "ataque" terminar       | Player1: Definir animação para "Idle" (executar do início)  
-    Player1: **OR** Quando animação "block" terminar |  
-    Player1: **OR** Quando animação "hit" terminar   |  
+7 - Player1: Quando animação "ataque" termina| Player1: Definir animação para "Idle" (executar do início)  
+    Player1: OR Quando animação "block" termi|  
+    Player1: OR Quando animação "hit" termina|  
 
-8 - Player2: Quando animação "ataque" terminar       | Player2: Definir animação para "Idle" (executar do início)  
-    Player2: **OR** Quando animação "block" terminar |  
-    Player2: **OR** Quando animação "hit" terminar   |
+8 - Player2: Quando animação "ataque" termina| Player2: Definir animação para "Idle" (executar do início)  
+    Player2: OR Quando animação "block" termi|  
+    Player2: OR Quando animação "hit" termina|
 </pre>
 <p class="explicacao">👉 Quando a animação de <em>"ataque"</em>, <em>"block"</em> ou <em>"hit"</em> termina (tanto para o Player1 quanto para o Player2), o personagem volta automaticamente para a animação <em>"idle"</em>, iniciando-a do começo.</p>
 <p class="explicacao">🎬 Isso garante que, após qualquer ação, o jogador sempre retorne ao estado parado e pronto para a próxima jogada.</p>
 <hr>
 <pre>
-9 - Função: jogadaP1      
-                      |  
-	10 - Sistema: VezDoJogador = 1            | Áudio: Tocar "11_human_damage_1" (volume 0 dB)
-                                                  | Player1: Mover para o topo da camada
-                                                  | Player1: Definir animação para "ataque" (executar do início)
-                                                  | Sistema: Aguardar 1 segundo (escala de tempo)
-                                                  | Sistema: Definir VezDoJogador para 2
-                                                  | Sistema: Definir ataque para Falso  
+9 - Função: jogadaP1                         |   
+
+  10 - Sistema: VezDoJogador = 1             | Áudio: Tocar "11_human_damage_1" (volume 0 dB)
+                                             | Player1: Mover para o topo da camada
+                                             | Player1: Definir animação para "ataque" (executar do início)
+                                             | Sistema: Aguardar 1 segundo (escala de tempo)
+                                             | Sistema: Definir VezDoJogador para 2
+                                             | Sistema: Definir ataque para Falso  
 
 
-	11 - Player1: Animação "ataque" está em execução    | Player2: Definir animação para "hit" (executar do início)
-             Player2: [X] Animação "block" está em execução | Sistema: Subtrair 1 de VidaP2
-                                                            | Áudio: Tocar "26_sword_hit_1" (volume 0 dB, sem repetição) 
+  11 - Player1: Animação "ataque" está em exe| Player1: Definir animação para "hit" (executar do início)
+       Player2: X Animação "block" está em ex| Sistema: Subtrair 1 de VidaP2
+                                             | Áudio: Tocar "26_sword_hit_1" (volume 0 dB, sem repetição) 
 
-12 - Função: jogadaP2                            |
+12 - Função: jogadaP2                        |
 
-	13 - Sistema: VezDoJogador = 2            | Áudio: Tocar "11_human_damage_1" (volume 0 dB)
-                                                  | Player2: Mover para o topo da camada
-                                                  | Player2: Definir animação para "ataque" (executar do início)
-                                                  | Sistema: Aguardar 1 segundo (escala de tempo)
-                                                  | Sistema: Definir VezDoJogador para 1
-                                                  | Sistema: Definir ataque para Falso
+  13 - Sistema: VezDoJogador = 2             | Áudio: Tocar "11_human_damage_1" (volume 0 dB)
+                                             | Player2: Mover para o topo da camada
+                                             | Player2: Definir animação para "ataque" (executar do início)
+                                             | Sistema: Aguardar 1 segundo (escala de tempo)
+                                             | Sistema: Definir VezDoJogador para 1
+                                             | Sistema: Definir ataque para Falso
 
-	14 - Player2: Animação "ataque" está em execução      | Player1: Definir animação para "hit" (executar do início)
-    	     Player1: [X] Animação "block" está em execução   | Sistema: Subtrair 1 de VidaP1
-                                                              | Áudio: Tocar "26_sword_hit_1" (volume 0 dB, sem repetição)     
+  14 - Player2: Animação "ataque" está em exe| Player2: Definir animação para "hit" (executar do início)
+       Player1: X Animação "block" está em ex| Sistema: Subtrair 1 de VidaP1
+                                             | Áudio: Tocar "26_sword_hit_1" (volume 0 dB, sem repetição)     
 </pre>
 <p class="explicacao">👉 Quando é a vez de um jogador (<strong>VezDoJogador = 1 ou 2</strong>), a função <em>jogada</em> é chamada.</p>
 <p class="explicacao">👉 O jogador ativo toca o som <em>"11_human_damage_1"</em>, é movido para o topo da camada e inicia a animação <em>"ataque"</em>.</p>
